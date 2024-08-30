@@ -1,40 +1,40 @@
 /*
-set/multiset ÔªËØ²åÈëÊ±»á±»×Ô¶¯ÅÅĞò
-µ×²ãÊÇ¶ş²æÊ÷
-set²»ÔÊĞí´æÔÚÖØ¸´µÄÔªËØ
-multisetÔÊĞí´æÔÚÖØ¸´µÄÔªËØ
-1.set ¹¹ÔìÓë¸³Öµ
-set<T> st; Ä¬ÈÏ¹¹Ôì
-set(const set& st) ¿½±´¹¹Ôì
-set& operator=(const set& st) ÔËËã·ûÖØÔØ¸³Öµ
+set/multiset å…ƒç´ æ’å…¥æ—¶ä¼šè¢«è‡ªåŠ¨æ’åº
+åº•å±‚æ˜¯äºŒå‰æ ‘
+setä¸å…è®¸å­˜åœ¨é‡å¤çš„å…ƒç´ 
+multisetå…è®¸å­˜åœ¨é‡å¤çš„å…ƒç´ 
+1.set æ„é€ ä¸èµ‹å€¼
+set<T> st; é»˜è®¤æ„é€ 
+set(const set& st) æ‹·è´æ„é€ 
+set& operator=(const set& st) è¿ç®—ç¬¦é‡è½½èµ‹å€¼
 
-2.²åÈëºÍÉ¾³ı
-insert()  //²åÈëºó×Ô¶¯ÅÅĞò
+2.æ’å…¥å’Œåˆ é™¤
+insert()  //æ’å…¥åè‡ªåŠ¨æ’åº
 clear()
 erase(pos)
 erase(beg,end)
 erase(elem)
 
-3.´óĞ¡ºÍ½»»»
+3.å¤§å°å’Œäº¤æ¢
 size()
 empty()
 swap(set)
 
-4.²éÕÒºÍÍ³¼Æ
-fing(key)  //·µ»ØÖµÎªµü´úÆ÷ÀàĞÍ set<int>::iterator pos=s1.find(30) Èç¹ûÎ´ÕÒµ½Ôò·µ»Øs1.end()
-cout(key) ½á¹ûÊÇ0»ò1
+4.æŸ¥æ‰¾å’Œç»Ÿè®¡
+fing(key)  //è¿”å›å€¼ä¸ºè¿­ä»£å™¨ç±»å‹ set<int>::iterator pos=s1.find(30) å¦‚æœæœªæ‰¾åˆ°åˆ™è¿”å›s1.end()
+cout(key) ç»“æœæ˜¯0æˆ–1
 
 5.set/multiset
-set±ß²åÈë±ß·µ»Ø²åÈë½á¹û Èç¹û´æÔÚÖØ¸´Êı¾İÔò²åÈëÊ§°Ü
-multiset²»»á½øĞĞ¼ì²â Òò´ËÔÊĞí´æÔÚÖØ¸´Êı¾İ
+setè¾¹æ’å…¥è¾¹è¿”å›æ’å…¥ç»“æœ å¦‚æœå­˜åœ¨é‡å¤æ•°æ®åˆ™æ’å…¥å¤±è´¥
+multisetä¸ä¼šè¿›è¡Œæ£€æµ‹ å› æ­¤å…è®¸å­˜åœ¨é‡å¤æ•°æ®
 
-6.pair¶Ô×é
+6.pairå¯¹ç»„
 pair<T,T> p(value1,value2)
 pair<T,T>=make_pair(value1,value2);
 
-7.setÅÅĞò£¨Ä¬ÈÏ´ÓĞ¡µ½´ó£©
-  1.ÄÚÖÃÀàĞÍÅÅĞò
-  2.×Ô¶¨ÀàĞÍÅÅĞò
+7.setæ’åºï¼ˆé»˜è®¤ä»å°åˆ°å¤§ï¼‰
+  1.å†…ç½®ç±»å‹æ’åº
+  2.è‡ªå®šç±»å‹æ’åº
 
 */
 
@@ -48,20 +48,20 @@ void test05(){
     pair<set<int>::iterator,bool> p;
     p=lst1.insert(1);
     if(p.second){
-        cout<<"²åÈë³É¹¦"<<endl;
+        cout<<"æ’å…¥æˆåŠŸ"<<endl;
     }else{
-        cout<<"²åÈëÊ§°Ü"<<endl;
+        cout<<"æ’å…¥å¤±è´¥"<<endl;
     }
-    p=lst1.insert(1);  //µÚ¶ş´Î²åÈëÊ§°Ü
+    p=lst1.insert(1);  //ç¬¬äºŒæ¬¡æ’å…¥å¤±è´¥
     if(p.second){
-        cout<<"²åÈë³É¹¦"<<endl;
+        cout<<"æ’å…¥æˆåŠŸ"<<endl;
     }else{
-        cout<<"²åÈëÊ§°Ü"<<endl;
+        cout<<"æ’å…¥å¤±è´¥"<<endl;
     }
 
     multiset<int> mul1;
     mul1.insert(1);
-    mul1.insert(1);  //Á½´Î¾ù²åÈë³É¹¦
+    mul1.insert(1);  //ä¸¤æ¬¡å‡æ’å…¥æˆåŠŸ
     for (multiset<int>::iterator i = mul1.begin(); i !=mul1.end(); i++)
     {
         cout<<*i<<" ";
@@ -70,13 +70,13 @@ void test05(){
     cout<<endl;
 }
 void test06(){
-    pair<string,int> p=make_pair("¶¡Õæ",88);
+    pair<string,int> p=make_pair("ä¸çœŸ",88);
     cout<<p.first<<" "<<p.second<<endl;
 }
-class Mycompare{  //·Âº¯Êı×Ô¶¨ÒåÅÅĞò¹æÔò
+class Mycompare{  //ä»¿å‡½æ•°è‡ªå®šä¹‰æ’åºè§„åˆ™
     public:
     bool operator()(int v1,int v2){
-        return v1>v2; //´Ó´óµ½Ğ¡ÅÅĞò
+        return v1>v2; //ä»å¤§åˆ°å°æ’åº
     }
 };
 void print_set(set<int>& s){
@@ -93,7 +93,7 @@ void test07_1(){
     for(int i=10;i<20;i++){
         set1.insert(i);
     }
-    print_set(set1); //Ä¬ÈÏ´ÓĞ¡µ½´ó
+    print_set(set1); //é»˜è®¤ä»å°åˆ°å¤§
 
     set<int,Mycompare> set2;
     for(int i=10;i<20;i++){
@@ -116,19 +116,19 @@ class Person{
     }
 };
 class Mycompare2{
-    public:  //·Âº¯Êı×Ô¶¨ÒåÅÅĞò¹æÔò
-    bool operator()(const Person& p1,const Person& p2){   //·µ»ØÖµ£ºbool operator()
+    public:  //ä»¿å‡½æ•°è‡ªå®šä¹‰æ’åºè§„åˆ™
+    bool operator()(const Person& p1,const Person& p2){   //è¿”å›å€¼ï¼šbool operator()
         return p1.age>p2.age;
     }
 };
 void test07_2(){
-    //×Ô¶¨ÒåÊı¾İÀàĞÍÅÅĞò
+    //è‡ªå®šä¹‰æ•°æ®ç±»å‹æ’åº
     set<Person,Mycompare2> set1;
-    Person p1("ÕÅÈı",18);
-    Person p2("ÀîËÄ",20);
-    Person p3("ÍõÎå",19);
-    Person p4("ÕÔÁù",17);
-    Person p5("Ç®Æß",21);
+    Person p1("å¼ ä¸‰",18);
+    Person p2("æå››",20);
+    Person p3("ç‹äº”",19);
+    Person p4("èµµå…­",17);
+    Person p5("é’±ä¸ƒ",21);
     set1.insert(p1);
     set1.insert(p2);
     set1.insert(p3);
@@ -145,5 +145,6 @@ int main(){
     // test06();
     // test07_1();
     test07_2();
+
 
 }
