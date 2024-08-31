@@ -22,8 +22,9 @@ class Worker{
 };
 void Creat_Worker(vector<Worker>& v){
     string NameSeed="ABCDEFGHI";
-    string name="员工";int salary=0;
+    int salary=0;
     for(int i=0;i<NameSeed.size();i++){
+        string name="员工";
         name+=NameSeed[i];
         salary=rand()%10000+1000;
         Worker worker(name,salary);
@@ -34,13 +35,14 @@ void Set_Group(vector<Worker>& v,multimap<int,Worker>& m){
     for (auto i = v.begin(); i != v.end(); i++)
     {
         int Part_Id=rand()%3;
-        cout<<"11111"<<endl;
+        // cout<<"11111"<<endl;
         m.insert(make_pair(Part_Id,*i));
         /* code */
     }  
 }
 void Print_Worker_Group(multimap<int,Worker>& m){
     int i;
+    while(1){
     cout<<"输入你想查看的部门人员名单:"<<endl;
     cout<<"1.策划"<<endl;
     cout<<"2.美术"<<endl;
@@ -77,6 +79,7 @@ void Print_Worker_Group(multimap<int,Worker>& m){
                 }
                 break;
                 }
+    }
     }
 }
 
