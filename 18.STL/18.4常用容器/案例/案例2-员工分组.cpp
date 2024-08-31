@@ -22,7 +22,7 @@ class Worker{
 };
 void Creat_Worker(vector<Worker>& v){
     string NameSeed="ABCDEFGHI";
-    string name="å‘˜å·¥";int salary=0;
+    string name="Ô±¹¤";int salary=0;
     for(int i=0;i<NameSeed.size();i++){
         name+=NameSeed[i];
         salary=rand()%10000+1000;
@@ -31,35 +31,64 @@ void Creat_Worker(vector<Worker>& v){
     }
 }
 void Set_Group(vector<Worker>& v,multimap<int,Worker>& m){
-    for (auto i = v.end(); i != v.end(); i++)
+    for (auto i = v.begin(); i != v.end(); i++)
     {
         int Part_Id=rand()%3;
+        cout<<"11111"<<endl;
         m.insert(make_pair(Part_Id,*i));
         /* code */
     }  
 }
 void Print_Worker_Group(multimap<int,Worker>& m){
     int i;
-    cout<<"è¾“å…¥ä½ æƒ³æŸ¥çœ‹çš„éƒ¨é—¨äººå‘˜åå•:"<<endl;
-    cout<<"1.ç­–åˆ’"<<endl;
-    cout<<"2.ç¾Žæœ¯"<<endl;
-    cout<<"3.ç ”å‘"<<endl;
-
-    cout<<"ç­–åˆ’éƒ¨é—¨åå•å¦‚ä¸‹ï¼š"<<endl;
-    auto pos=m.find(CeHua);
-    auto count=m.count(CeHua);
-    auto index=0;
-    for(;pos!=m.end()&&index<count;pos++,index++){  //åŒæŒ‡é’ˆ
-        cout<<pos->second.name<<" "<<pos->second.salary<<endl;
+    cout<<"ÊäÈëÄãÏë²é¿´µÄ²¿ÃÅÈËÔ±Ãûµ¥:"<<endl;
+    cout<<"1.²ß»®"<<endl;
+    cout<<"2.ÃÀÊõ"<<endl;
+    cout<<"3.ÑÐ·¢"<<endl;
+    cin>>i;
+    switch(i){
+        case 1:{
+                cout<<"²ß»®²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                auto pos=m.find(CeHua);
+                int count=m.count(CeHua);
+                int index=0;
+                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                    cout<<pos->second.name<<" "<<pos->second.salary<<endl;
+                }
+                break;
+                }
+        case 2:{
+                cout<<"ÃÀÊõ²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                auto pos=m.find(MeiShu);
+                int count=m.count(MeiShu);
+                int index=0;
+                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                    cout<<pos->second.name<<" "<<pos->second.salary<<endl;
+                }
+                break;
+                }
+        case 3:{
+                cout<<"ÑÐ·¢²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                auto pos=m.find(YanFa);
+                int count=m.count(YanFa);
+                int index=0;
+                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                    cout<<pos->second.name<<" "<<pos->second.salary<<endl;
+                }
+                break;
+                }
     }
-
-    
 }
 
 void test01(){
-    auto a=8;
+    vector<Worker> v1;
+    multimap<int,Worker> m1;
+    Creat_Worker(v1);
+    Set_Group(v1,m1);
+    Print_Worker_Group(m1);
 }
 
 int main(){
-
+    srand((unsigned int)time(NULL));
+    test01();
 }   
