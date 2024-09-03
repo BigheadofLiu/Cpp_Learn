@@ -1,7 +1,7 @@
 #include"person.hpp"
 
 int main(){
-    Person<string,int> p1("¶¡ÕæÕäÖé",27);
+    Person<string,int> p1("ä¸çœŸçç ",27);
     p1.print();
     return 0;
 }
