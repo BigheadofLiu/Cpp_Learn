@@ -65,7 +65,7 @@ void test02(){
     cout<<ne(50)<<endl;
 
     plus<int> p1;
-    cout<<(50,1000)<<endl;
+    cout<<p1(50,1000)<<endl;
 
     
 }
