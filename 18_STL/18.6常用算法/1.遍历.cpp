@@ -1,15 +1,16 @@
 /*
 for_each(v.beg(),v.end(),_fun_)  遍历容器  fun可以是普通函数（不带括号） 也可以是函数对象（带括号）
-transform(v1.beg(),v1,end(),v2.beg(),_fun_)  容器间搬运 搬运前需要
+transform(v1.beg(),v1,end(),v2.beg(),_fun_)  容器间搬运 搬运前需要resize容器大小
 */
 #include<iostream>
 using namespace std;
 #include<vector>
 #include<algorithm>
+
 class my_print01{
     public:
     void operator()(int val){
-        cout<<val<<" ";
+        std::cout<<val<<" ";
     }
     
 };
@@ -19,7 +20,7 @@ void my_print02(int val){
 int get_val(int val){
     return val;
 }
-void creat_vector(vector<int>& v){
+void creat_vector(std::vector<int>& v){
 for(int i=0;i<10;i++){
     v.push_back(rand()%100+1);
 }

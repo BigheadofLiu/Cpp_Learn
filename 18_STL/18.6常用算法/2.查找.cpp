@@ -1,8 +1,88 @@
 /*
-find(iterator beg, iterator end, value) //æŸ¥æ‰¾å…ƒç´ 
-find_if(iterator beg, iterator end, _Pred) //æŒ‰æ¡ä»¶æŸ¥æ‰¾å…ƒç´  ä½¿ç”¨å‡½æ•°æˆ–è°“è¯
-adjacent_find //æŸ¥æ‰¾ç›¸é‚»é‡å¤å…ƒç´ 
-binary_search //äºŒåˆ†æŸ¥æ‰¾æ³•ï¼ˆæ— åºåºåˆ—ä¸å¯ä½¿ç”¨ï¼‰
-count //ç»Ÿè®¡å…ƒç´ ä¸ªæ•°
-count_if //æŒ‰æ¡ä»¶ç»Ÿè®¡å…ƒç´ ä¸ªæ•° ä½¿ç”¨å‡½æ•°æˆ–è°“è¯
+find(iterator beg, iterator end, value) //²éÕÒÔªËØ Èç¹ûÕÒµ½·µ»ØÔªËØµü´úÆ÷ ÕÒ²»µ½·µ»Øendµü´úÆ÷
+find_if(iterator beg, iterator end, _Pred) //°´Ìõ¼ş²éÕÒÔªËØ Ê¹ÓÃº¯Êı»òÎ½´Ê Èç¹ûÕÒµ½·µ»ØÂú×ãµÚÒ»¸öÌõ¼şµÄÔªËØµü´úÆ÷ ÕÒ²»µ½·µ»Øendµü´úÆ÷
+adjacent_find //²éÕÒÏàÁÚÖØ¸´ÔªËØ
+binary_search //¶ş·Ö²éÕÒ·¨£¨ÎŞĞòĞòÁĞ²»¿ÉÊ¹ÓÃ£©
+count //Í³¼ÆÔªËØ¸öÊı
+count_if //°´Ìõ¼şÍ³¼ÆÔªËØ¸öÊı Ê¹ÓÃº¯Êı»òÎ½´Ê
 */
+#include<algorithm>
+#include<vector>
+#include<string>
+#include<iostream>
+class Person{
+    public:
+    Person(std::string name,int age){
+        this->m_name=name;
+        this->m_age=age;
+    }
+    bool operator==(const Person& p){  
+    //ÖØÔØµÄÒâÒåÊÇÉ¶£¿Ä£Äâ±È½Ïvalue£¿Èç¹û²»Ğ´¿ÉÒÔÂğ£¿ 
+    //²»¿ÉÒÔ²»Ğ´ find·½·¨²»°üº¬×Ô¶¨ÒåÀàµÄ±È½Ï·½·¨£¨ÄÚÖÃÊı¾İÀàĞÍ°üº¬£©
+    
+        if(this->m_age==p.m_age&&this->m_name==p.m_name){
+            return true;
+        }
+        return false;
+    }
+    public:
+    std::string m_name;
+    int m_age;
+};
+void creat_vector(std::vector<int>& v){
+for(int i=0;i<10;i++){
+    v.push_back(i);
+}
+}
+void test01(){
+    std::vector<int> v1;
+    creat_vector(v1);
+    auto a=std::find(v1.begin(),v1.end(),5);
+    if(a!=v1.end()){
+        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        return;
+    }
+    std::cout<<"²éÕÒÊ§°Ü£¡"<<std::endl;
+    return;
+
+}
+void test02(){
+    std::vector<Person> v;
+    Person p1("Tom",18);
+    Person p2("Jerry",19);
+    Person p3("Rose",20);
+    v.push_back(p1);
+    v.push_back(p2);
+    v.push_back(p3);
+    auto a=std::find(v.begin(),v.end(),p1);
+    if(a!=v.end()){
+        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        return;
+    }
+    std::cout<<"²éÕÒÊ§°Ü"<<std::endl;
+
+}
+class Mycompare{
+    public:
+    bool operator()(int val){  //bool operator()¹Ì¶¨¸ñÊ½
+        return val>5;
+    }
+};
+void test03(){
+    std::vector<int> v;
+    creat_vector(v);
+    auto a=std::find_if(v.begin(),v.end(),Mycompare());
+    if(a==v.end()){
+        std::cout<<"²éÕÒÊ§°Ü"<<std::endl;
+        
+    }
+        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        std::cout<<*a<<std::endl;
+
+}
+void test04(){}
+int main(){
+    // test01();
+    // test02();
+    test03();
+}
