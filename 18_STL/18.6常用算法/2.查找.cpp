@@ -1,10 +1,10 @@
 /*
 find(iterator beg, iterator end, value) //查找元素 如果找到返回元素迭代器 找不到返回end迭代器
 find_if(iterator beg, iterator end, _Pred) //按条件查找元素 使用函数或谓词 如果找到返回满足第一个条件的元素迭代器 找不到返回end迭代器
-adjacent_find //查找相邻重复元素
-binary_search //二分查找法（无序序列不可使用）
-count //统计元素个数
-count_if //按条件统计元素个数 使用函数或谓词
+adjacent_find(iterator beg, iterator end); //查找相邻重复元素 如果找到 返回第一个相邻且相同的元素的迭代器 如果未找到返回end
+binary_search(iterator beg, iterator end, value); //二分查找法（无序序列不可使用）查到true 未查到false
+count(iterator beg, iterator end, value); //统计元素个数
+count_if(iterator beg, iterator end, _fun_); //按条件统计元素个数 使用函数或谓词
 */
 #include<algorithm>
 #include<vector>
@@ -72,13 +72,23 @@ void test03(){
     std::vector<int> v;
     creat_vector(v);
     auto a=std::find_if(v.begin(),v.end(),Mycompare());
+    auto b=std::count(v.begin(),v.end(),5);
+    auto c=std::count_if(v.begin(),v.end(),Mycompare());
+    std::cout<<b<<" "<<c<<std::endl;
     if(a==v.end()){
         std::cout<<"查找失败"<<std::endl;
-        
     }
         std::cout<<"查找成功！"<<std::endl;
         std::cout<<*a<<std::endl;
-
+    auto d=std::adjacent_find(v.begin(),v.end());
+    if(d!=v.end()){
+        std::cout<<"相邻重复查找成功！"<<std::endl;
+    }else
+    {
+        std::cout<<"相邻重复查找失败！"<<std::endl;
+    }
+    
+    
 }
 void test04(){}
 int main(){
