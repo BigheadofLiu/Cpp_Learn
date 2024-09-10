@@ -87,7 +87,12 @@ void test03(){
     {
         std::cout<<"相邻重复查找失败！"<<std::endl;
     }
-    
+    auto e=std::binary_search(v.begin(),v.end(),5);
+    if(e){
+        std::cout<<"二分查找success"<<std::endl;
+    }else{
+        std::cout<<"二分查找fail"<<std::endl;
+    }
     
 }
 void test04(){}
