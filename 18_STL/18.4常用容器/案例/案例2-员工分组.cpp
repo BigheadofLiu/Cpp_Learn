@@ -24,7 +24,7 @@ void Creat_Worker(vector<Worker>& v){
     string NameSeed="ABCDEFGHI";
     int salary=0;
     for(int i=0;i<NameSeed.size();i++){
-        string name="Ô±¹¤";
+        string name="å‘˜å·¥";
         name+=NameSeed[i];
         salary=rand()%10000+1000;
         Worker worker(name,salary);
@@ -43,38 +43,38 @@ void Set_Group(vector<Worker>& v,multimap<int,Worker>& m){
 void Print_Worker_Group(multimap<int,Worker>& m){
     int i;
     while(1){
-    cout<<"ÊäÈëÄãÏë²é¿´µÄ²¿ÃÅÈËÔ±Ãûµ¥:"<<endl;
-    cout<<"1.²ß»®"<<endl;
-    cout<<"2.ÃÀÊõ"<<endl;
-    cout<<"3.ÑÐ·¢"<<endl;
+    cout<<"è¾“å…¥ä½ æƒ³æŸ¥çœ‹çš„éƒ¨é—¨äººå‘˜åå•:"<<endl;
+    cout<<"1.ç­–åˆ’"<<endl;
+    cout<<"2.ç¾Žæœ¯"<<endl;
+    cout<<"3.ç ”å‘"<<endl;
     cin>>i;
     switch(i){
         case 1:{
-                cout<<"²ß»®²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                cout<<"ç­–åˆ’éƒ¨é—¨åå•å¦‚ä¸‹ï¼š"<<endl;
                 auto pos=m.find(CeHua);
                 int count=m.count(CeHua);
                 int index=0;
-                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                for(;pos!=m.end()&&index<count;pos++,index++){  //åŒæŒ‡é’ˆ
                     cout<<pos->second.name<<" "<<pos->second.salary<<endl;
                 }
                 break;
                 }
         case 2:{
-                cout<<"ÃÀÊõ²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                cout<<"ç¾Žæœ¯éƒ¨é—¨åå•å¦‚ä¸‹ï¼š"<<endl;
                 auto pos=m.find(MeiShu);
                 int count=m.count(MeiShu);
                 int index=0;
-                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                for(;pos!=m.end()&&index<count;pos++,index++){  //åŒæŒ‡é’ˆ
                     cout<<pos->second.name<<" "<<pos->second.salary<<endl;
                 }
                 break;
                 }
         case 3:{
-                cout<<"ÑÐ·¢²¿ÃÅÃûµ¥ÈçÏÂ£º"<<endl;
+                cout<<"ç ”å‘éƒ¨é—¨åå•å¦‚ä¸‹ï¼š"<<endl;
                 auto pos=m.find(YanFa);
                 int count=m.count(YanFa);
                 int index=0;
-                for(;pos!=m.end()&&index<count;pos++,index++){  //Ë«Ö¸Õë
+                for(;pos!=m.end()&&index<count;pos++,index++){  //åŒæŒ‡é’ˆ
                     cout<<pos->second.name<<" "<<pos->second.salary<<endl;
                 }
                 break;
