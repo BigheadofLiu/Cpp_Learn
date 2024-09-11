@@ -4,7 +4,9 @@
       "name": "windows-gcc-x86",
       "includePath": [
         "${workspaceFolder}/**",
-        "C:\\Users\\ZYB\\vcpkg\\packages\\sfml_x64-windows\\include"
+        "C:\\Users\\ZYB\\vcpkg\\packages\\sfml_x64-windows\\include",
+        "${workspaceFolder}/include/**",
+        "E:\\Demo\\Cpp\\Vscode\\19_案例\\演讲比赛\\include\\**"
       ],
       "defines": [
         "_DEBUG",
