@@ -1,11 +1,8 @@
 #include"speak_game_manager.h"
 speak_manager::speak_manager(){ //必须写空实现 不然报错。。。这是为何
-//初始化成员函数属性
-this->v_all.clear();
-this->v_g1.clear();
-this->v_g2.clear();
-this->m_victor.clear();
-this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
+this->init();
+this->create_speaker();
+
 }
 speak_manager::~speak_manager(){
 }
@@ -50,18 +47,29 @@ switch (c)
 }
 }
 void speak_manager::init(){
-
+	//初始化成员函数属性
+	this->v_all.clear();
+	this->v_g1.clear();
+	this->v_g2.clear();
+	this->m_member.clear();
+	this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
 }
 void speak_manager::create_speaker(){
 	string name_need="ABCDEFGHIJKL";
-	
 	for (int i = 0; i < name_need.size(); i++)
 	{
 		string name="选手";
 		name+=name_need[i];
 		speaker sp;
-		sp.name=name;
+		sp.name=name;   //姓名初始化
+		for (int j = 0; j < 2; j++)
+		{
+			sp.m_score[j]=0.0;  //两轮分数初始化
+			/* code */
+		}
+        //编号初始化
+		sp.number=i+10087459;
+		// this->m_member=make_pair()
+		this->v_all.push_back(sp);
 	}
-	
-
 }
