@@ -8,6 +8,7 @@ vector存取
 2.vector operator[]
 3.vector.front()
 4.vector.back()
+5.vector.clear() //清空_常用
 */
 int main(){
     vector<int> v1;

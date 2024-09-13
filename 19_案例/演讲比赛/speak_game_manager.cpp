@@ -1,9 +1,15 @@
-#include"speed_game_manager.h"
-speed_manager::speed_manager(){ //必须写空实现 不然报错。。。这是为何
+#include"speak_game_manager.h"
+speak_manager::speak_manager(){ //必须写空实现 不然报错。。。这是为何
+//初始化成员函数属性
+this->v_all.clear();
+this->v_g1.clear();
+this->v_g2.clear();
+this->m_victor.clear();
+this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
 }
-speed_manager::~speed_manager(){
+speak_manager::~speak_manager(){
 }
-int speed_manager::showmenu(){
+int speak_manager::showmenu(){
     cout << "********************************************" << endl;
 	cout << "*************  欢迎参加演讲比赛 ************" << endl;
 	cout << "*************  1.开始演讲比赛  *************" << endl;
@@ -16,14 +22,14 @@ int speed_manager::showmenu(){
 	cin>>c;
 	return c;
 }
-void speed_manager::sys_exit(){
+void speak_manager::sys_exit(){
 system("cls");
 std::cout<<"欢迎下次使用"<<endl;
-system("pause");
+system("pause >nul");
 std::exit(0);
 }
-void speed_manager::choice(int showmenu()){
-switch (showmenu())
+void speak_manager::choice(int c){
+switch (c)
 {
         case 1:  //开始比赛
         cout<<"开始"<<endl;
@@ -35,7 +41,7 @@ switch (showmenu())
 			cout<<"清空"<<endl;
 			break;
 		case 0:  //退出系统
-		    speed_manager::sys_exit();
+		    sys_exit();
 			break;
 		default:
 			cout<<"输入有误"<<endl;
@@ -43,4 +49,19 @@ switch (showmenu())
 			break;
 }
 }
+void speak_manager::init(){
 
+}
+void speak_manager::create_speaker(){
+	string name_need="ABCDEFGHIJKL";
+	
+	for (int i = 0; i < name_need.size(); i++)
+	{
+		string name="选手";
+		name+=name_need[i];
+		speaker sp;
+		sp.name=name;
+	}
+	
+
+}
