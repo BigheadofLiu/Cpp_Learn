@@ -2,6 +2,7 @@
 
 // #include"speed_game_manager.h"
 int main(){
+    srand(time(0));
     speak_manager sm;
     // int c=sm.showmenu();
     // for (auto i = sm.v_all.begin(); i !=sm.v_all.end(); i++)

@@ -30,6 +30,8 @@ switch (c)
 {
         case 1:  //开始比赛
         cout<<"开始"<<endl;
+		create_speaker();
+		start_draw();
 			break;
 		case 2:  //查看记录
 			cout<<"查看"<<endl;
@@ -72,4 +74,44 @@ void speak_manager::create_speaker(){
 		// this->m_member=make_pair()
 		this->v_all.push_back(sp);
 	}
+}
+void speak_manager::start_game(){
+	//1.第一轮比赛
+	//抽签
+	//比赛
+	//晋级
+
+	//2.第二轮比赛
+	//抽签
+	//比赛
+	//晋级
+	//保存分数
+}
+void speak_manager::start_draw(){
+//抽签
+std::cout<<"开始第"<<this->speak_game_count<<"轮抽签"<<std::endl;
+cout<<"------------------------"<<endl;
+cout<<"抽签后的顺序如下"<<std::endl;
+cout<<"----编号------姓名-------"<<endl;
+if(this->speak_game_count==1){
+	random_shuffle(this->v_all.begin(),this->v_all.end());
+    for (auto i = v_all.begin(); i !=v_all.end(); i++)
+	{	
+		cout<<i->number<<"----"<<i->name<<std::endl;
+		/* code */
+	}	
+}else{
+	random_shuffle(v_g1.begin(),v_g1.end());
+	for (auto i = v_g1.begin(); i !=v_g1.end(); i++)
+	{	
+		cout<<i->number<<"----"<<i->name<<std::endl;
+		/* code */
+	}
+}
+cout<<"抽签完毕"<<endl;
+system("pause");
+cout<<endl;
+}
+void start_speak(){
+
 }

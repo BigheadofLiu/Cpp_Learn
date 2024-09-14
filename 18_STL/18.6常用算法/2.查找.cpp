@@ -1,10 +1,10 @@
 /*
-find(iterator beg, iterator end, value) //²éÕÒÔªËØ Èç¹ûÕÒµ½·µ»ØÔªËØµü´úÆ÷ ÕÒ²»µ½·µ»Øendµü´úÆ÷
-find_if(iterator beg, iterator end, _Pred) //°´Ìõ¼ş²éÕÒÔªËØ Ê¹ÓÃº¯Êı»òÎ½´Ê Èç¹ûÕÒµ½·µ»ØÂú×ãµÚÒ»¸öÌõ¼şµÄÔªËØµü´úÆ÷ ÕÒ²»µ½·µ»Øendµü´úÆ÷
-adjacent_find(iterator beg, iterator end); //²éÕÒÏàÁÚÖØ¸´ÔªËØ Èç¹ûÕÒµ½ ·µ»ØµÚÒ»¸öÏàÁÚÇÒÏàÍ¬µÄÔªËØµÄµü´úÆ÷ Èç¹ûÎ´ÕÒµ½·µ»Øend
-binary_search(iterator beg, iterator end, value); //¶ş·Ö²éÕÒ·¨£¨ÎŞĞòĞòÁĞ²»¿ÉÊ¹ÓÃ£©²éµ½true Î´²éµ½false
-count(iterator beg, iterator end, value); //Í³¼ÆÔªËØ¸öÊı
-count_if(iterator beg, iterator end, _fun_); //°´Ìõ¼şÍ³¼ÆÔªËØ¸öÊı Ê¹ÓÃº¯Êı»òÎ½´Ê
+find(iterator beg, iterator end, value) //æŸ¥æ‰¾å…ƒç´  å¦‚æœæ‰¾åˆ°è¿”å›å…ƒç´ è¿­ä»£å™¨ æ‰¾ä¸åˆ°è¿”å›endè¿­ä»£å™¨
+find_if(iterator beg, iterator end, _Pred) //æŒ‰æ¡ä»¶æŸ¥æ‰¾å…ƒç´  ä½¿ç”¨å‡½æ•°æˆ–è°“è¯ å¦‚æœæ‰¾åˆ°è¿”å›æ»¡è¶³ç¬¬ä¸€ä¸ªæ¡ä»¶çš„å…ƒç´ è¿­ä»£å™¨ æ‰¾ä¸åˆ°è¿”å›endè¿­ä»£å™¨
+adjacent_find(iterator beg, iterator end); //æŸ¥æ‰¾ç›¸é‚»é‡å¤å…ƒç´  å¦‚æœæ‰¾åˆ° è¿”å›ç¬¬ä¸€ä¸ªç›¸é‚»ä¸”ç›¸åŒçš„å…ƒç´ çš„è¿­ä»£å™¨ å¦‚æœæœªæ‰¾åˆ°è¿”å›end
+binary_search(iterator beg, iterator end, value); //äºŒåˆ†æŸ¥æ‰¾æ³•ï¼ˆæ— åºåºåˆ—ä¸å¯ä½¿ç”¨ï¼‰æŸ¥åˆ°true æœªæŸ¥åˆ°false
+count(iterator beg, iterator end, value); //ç»Ÿè®¡å…ƒç´ ä¸ªæ•°
+count_if(iterator beg, iterator end, _fun_); //æŒ‰æ¡ä»¶ç»Ÿè®¡å…ƒç´ ä¸ªæ•° ä½¿ç”¨å‡½æ•°æˆ–è°“è¯
 */
 #include<algorithm>
 #include<vector>
@@ -17,8 +17,8 @@ class Person{
         this->m_age=age;
     }
     bool operator==(const Person& p){  
-    //ÖØÔØµÄÒâÒåÊÇÉ¶£¿Ä£Äâ±È½Ïvalue£¿Èç¹û²»Ğ´¿ÉÒÔÂğ£¿ 
-    //²»¿ÉÒÔ²»Ğ´ find·½·¨²»°üº¬×Ô¶¨ÒåÀàµÄ±È½Ï·½·¨£¨ÄÚÖÃÊı¾İÀàĞÍ°üº¬£©
+    //é‡è½½çš„æ„ä¹‰æ˜¯å•¥ï¼Ÿæ¨¡æ‹Ÿæ¯”è¾ƒvalueï¼Ÿå¦‚æœä¸å†™å¯ä»¥å—ï¼Ÿ 
+    //ä¸å¯ä»¥ä¸å†™ findæ–¹æ³•ä¸åŒ…å«è‡ªå®šä¹‰ç±»çš„æ¯”è¾ƒæ–¹æ³•ï¼ˆå†…ç½®æ•°æ®ç±»å‹åŒ…å«ï¼‰
     
         if(this->m_age==p.m_age&&this->m_name==p.m_name){
             return true;
@@ -39,10 +39,10 @@ void test01(){
     creat_vector(v1);
     auto a=std::find(v1.begin(),v1.end(),5);
     if(a!=v1.end()){
-        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        std::cout<<"æŸ¥æ‰¾æˆåŠŸï¼"<<std::endl;
         return;
     }
-    std::cout<<"²éÕÒÊ§°Ü£¡"<<std::endl;
+    std::cout<<"æŸ¥æ‰¾å¤±è´¥ï¼"<<std::endl;
     return;
 
 }
@@ -56,15 +56,15 @@ void test02(){
     v.push_back(p3);
     auto a=std::find(v.begin(),v.end(),p1);
     if(a!=v.end()){
-        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        std::cout<<"æŸ¥æ‰¾æˆåŠŸï¼"<<std::endl;
         return;
     }
-    std::cout<<"²éÕÒÊ§°Ü"<<std::endl;
+    std::cout<<"æŸ¥æ‰¾å¤±è´¥"<<std::endl;
 
 }
 class Mycompare{
     public:
-    bool operator()(int val){  //bool operator()¹Ì¶¨¸ñÊ½
+    bool operator()(int val){  //bool operator()å›ºå®šæ ¼å¼
         return val>5;
     }
 };
@@ -76,22 +76,22 @@ void test03(){
     auto c=std::count_if(v.begin(),v.end(),Mycompare());
     std::cout<<b<<" "<<c<<std::endl;
     if(a==v.end()){
-        std::cout<<"²éÕÒÊ§°Ü"<<std::endl;
+        std::cout<<"æŸ¥æ‰¾å¤±è´¥"<<std::endl;
     }
-        std::cout<<"²éÕÒ³É¹¦£¡"<<std::endl;
+        std::cout<<"æŸ¥æ‰¾æˆåŠŸï¼"<<std::endl;
         std::cout<<*a<<std::endl;
     auto d=std::adjacent_find(v.begin(),v.end());
     if(d!=v.end()){
-        std::cout<<"ÏàÁÚÖØ¸´²éÕÒ³É¹¦£¡"<<std::endl;
+        std::cout<<"ç›¸é‚»é‡å¤æŸ¥æ‰¾æˆåŠŸï¼"<<std::endl;
     }else
     {
-        std::cout<<"ÏàÁÚÖØ¸´²éÕÒÊ§°Ü£¡"<<std::endl;
+        std::cout<<"ç›¸é‚»é‡å¤æŸ¥æ‰¾å¤±è´¥ï¼"<<std::endl;
     }
     auto e=std::binary_search(v.begin(),v.end(),5);
     if(e){
-        std::cout<<"¶ş·Ö²éÕÒsuccess"<<std::endl;
+        std::cout<<"äºŒåˆ†æŸ¥æ‰¾success"<<std::endl;
     }else{
-        std::cout<<"¶ş·Ö²éÕÒfail"<<std::endl;
+        std::cout<<"äºŒåˆ†æŸ¥æ‰¾fail"<<std::endl;
     }
     
 }
