@@ -2,22 +2,31 @@
 speak_manager::speak_manager(){ //必须写空实现 不然报错。。。这是为何
 this->init();
 this->create_speaker();
-
 }
 speak_manager::~speak_manager(){
 }
-int speak_manager::showmenu(){
-    cout << "********************************************" << endl;
-	cout << "*************  欢迎参加演讲比赛 ************" << endl;
-	cout << "*************  1.开始演讲比赛  *************" << endl;
-	cout << "*************  2.查看往届记录  *************" << endl;
-	cout << "*************  3.清空比赛记录  *************" << endl;
-	cout << "*************  0.退出比赛程序  *************" << endl;
-	cout << "********************************************" << endl;
-	cout << endl;
-	int c;
-	cin>>c;
-	return c;
+int speak_manager::showmenu() {
+    while (true) {
+        cout << "********************************************" << endl;
+        cout << "*************  欢迎参加演讲比赛 ************" << endl;
+        cout << "*************  1.开始演讲比赛  *************" << endl;
+        cout << "*************  2.查看往届记录  *************" << endl;
+        cout << "*************  3.清空比赛记录  *************" << endl;
+        cout << "*************  0.退出比赛程序  *************" << endl;
+        cout << "********************************************" << endl;
+        cout << endl;
+        int c=0;
+        cin >> c;
+        if (cin.fail()) {
+            system("cls");
+            cout << "非法输入，重新输入！" << endl;
+            cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        return c;
+        break;
+    }
 }
 void speak_manager::sys_exit(){
 system("cls");
@@ -30,8 +39,8 @@ switch (c)
 {
         case 1:  //开始比赛
         cout<<"开始"<<endl;
-		create_speaker();
-		start_draw();
+		start_game();
+
 			break;
 		case 2:  //查看记录
 			cout<<"查看"<<endl;
@@ -55,6 +64,7 @@ void speak_manager::init(){
 	this->v_g2.clear();
 	this->m_member.clear();
 	this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
+	this->speak_ref=10;
 }
 void speak_manager::create_speaker(){
 	string name_need="ABCDEFGHIJKL";
@@ -73,9 +83,13 @@ void speak_manager::create_speaker(){
 		sp.number=i+10087459;
 		// this->m_member=make_pair()
 		this->v_all.push_back(sp);
+		// cout<<"name_need.size()"<<name_need.size()<<endl;
 	}
 }
 void speak_manager::start_game(){
+	// create_speaker();  //构造函数中已实现
+	start_draw();
+    start_speak();
 	//1.第一轮比赛
 	//抽签
 	//比赛
@@ -112,6 +126,59 @@ cout<<"抽签完毕"<<endl;
 system("pause");
 cout<<endl;
 }
-void start_speak(){
 
+void speak_manager::start_speak(){
+cout<<"第"<<speak_game_count<<"轮比赛现在开始"<<endl;
+vector<speaker> v_temp; //临时容器
+int s_num=0; //计数器
+if(this->speak_game_count==1){
+	v_temp=this->v_all;
+}else{
+	v_temp=this->v_g1;
+}
+for (auto i = v_temp.begin(); i != v_temp.end(); i++)
+{	s_num++;
+    /*cout<<"----"<<s_num<<"----"<<endl;*/
+	deque<double> s_d;  //打分容器
+	for (int i = 0; i <speak_ref; i++)
+	{	auto score=double((rand()%40+61));
+//        cout<<score<<endl;
+	    s_d.push_back(score);
+		/* code */
+	}
+	sort(s_d.begin(),s_d.end(),greater<>());
+	s_d.pop_back();
+	s_d.pop_front();   //剔除最高分和最低分
+	double sum_score=0;
+	sum_score=accumulate(s_d.begin(),s_d.end(),0);
+	double ave_score=sum_score/double(s_d.size());
+//    cout<<"平均成绩："<<ave_score<<endl;
+	i->m_score[this->speak_game_count-1]=ave_score;
+	/* code */
+	if (s_num%6==0)
+	{
+		cout<<"第"<< s_num/6 <<"小组比赛名次如下："<<endl;
+		cout<<"--编号--"<<"--姓名--"<<"--分数--"<<endl;
+		for (auto & j : v_temp)
+		{
+			cout<<j.number<<" "<<j.name<<" "<<*j.m_score<<endl;
+
+		}
+		int s_count=0;
+		for (auto j = v_temp.begin(); j !=v_temp.end()&&s_count<3; j++,s_count++)
+		{
+			if (this->speak_game_count==1)
+			{
+				this->v_g1.push_back(*j);
+
+			}else{
+				this->v_g2.push_back(*j);
+			}
+		}
+		 this->speak_game_count=2;
+	}
+}
+    cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;
+	v_temp.clear();
+    this->speak_game_count=2;
 }
