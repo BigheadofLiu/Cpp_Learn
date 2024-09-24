@@ -1,4 +1,5 @@
 #include"speak_game_manager.h"
+
 speak_manager::speak_manager(){ //必须写空实现 不然报错。。。这是为何
 this->init();
 this->create_speaker();
@@ -6,7 +7,7 @@ this->create_speaker();
 speak_manager::~speak_manager(){
 }
 int speak_manager::showmenu() {
-    while (true) {
+        while (true) {
         cout << "********************************************" << endl;
         cout << "*************  欢迎参加演讲比赛 ************" << endl;
         cout << "*************  1.开始演讲比赛  *************" << endl;
@@ -14,23 +15,23 @@ int speak_manager::showmenu() {
         cout << "*************  3.清空比赛记录  *************" << endl;
         cout << "*************  0.退出比赛程序  *************" << endl;
         cout << "********************************************" << endl;
-        cout << endl;
         int c=0;
         cin >> c;
         if (cin.fail()) {
-            system("cls");
-            cout << "非法输入，重新输入！" << endl;
+            cout << "非法输入，重新输入！";
             cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            Sleep(2000);
+			system("cls");
             continue;
         }
         return c;
-        break;
+        /*break;*/
     }
 }
 void speak_manager::sys_exit(){
 system("cls");
-std::cout<<"欢迎下次使用"<<endl;
+std::cout<<"欢迎下次使用";
 system("pause >nul");
 std::exit(0);
 }
@@ -38,11 +39,11 @@ void speak_manager::choice(int c){
 switch (c)
 {
         case 1:  //开始比赛
-        cout<<"开始"<<endl;
+        // cout<<"开始"<<endl;
+		system("cls");
 		start_game();
-
 			break;
-		case 2:  //查看记录
+		case 2:  //查看记录  
 			cout<<"查看"<<endl;
 			break;
 		case 3:  //清空记录
@@ -52,8 +53,10 @@ switch (c)
 		    sys_exit();
 			break;
 		default:
-			cout<<"输入有误"<<endl;
+			cout<<"输入有误,重新输入！"<<endl;
+			Sleep(2000);
 			system("cls"); //清屏
+			choice(speak_manager::showmenu());
 			break;
 }
 }
@@ -104,7 +107,7 @@ void speak_manager::start_game(){
 void speak_manager::start_draw(){
 //抽签
 std::cout<<"开始第"<<this->speak_game_count<<"轮抽签"<<std::endl;
-cout<<"------------------------"<<endl;
+// cout<<"------------------------"<<endl;
 cout<<"抽签后的顺序如下"<<std::endl;
 cout<<"----编号------姓名-------"<<endl;
 if(this->speak_game_count==1){
@@ -159,9 +162,9 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 	{
 		cout<<"第"<< s_num/6 <<"小组比赛名次如下："<<endl;
 		cout<<"--编号--"<<"--姓名--"<<"--分数--"<<endl;
-		for (auto & j : v_temp)
+		for (auto j=v_temp.begin();j!=v_temp.end();j++)
 		{
-			cout<<j.number<<" "<<j.name<<" "<<*j.m_score<<endl;
+			cout<<j->number<<" "<<j->name<<" "<<*j->m_score<<endl;
 
 		}
 		int s_count=0;
@@ -175,7 +178,7 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 				this->v_g2.push_back(*j);
 			}
 		}
-		 this->speak_game_count=2;
+		//  this->speak_game_count=2;
 	}
 }
     cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;

@@ -8,7 +8,10 @@
 #include<ctime>
 #include<numeric>
 #include "limits"
+#include<time.h>
+#include<windows.h>
 using namespace std;
+
 class speak_manager{
     public:
     speak_manager();
@@ -23,10 +26,10 @@ class speak_manager{
     void start_speak(); //
  
     public:
-    vector<speaker> v_all; //12个选手容器 12
-    vector<speaker> v_g1; //第一轮容器 6
-    vector<speaker> v_g2; //第二轮容器 3
-    map<int,speaker> m_member; //存放参赛者编号和选手 12
+    std::vector<speaker> v_all; //12个选手容器 12
+    std::vector<speaker> v_g1; //第一轮容器 6
+    std::vector<speaker> v_g2; //第二轮容器 3
+    std::map<int,speaker> m_member; //存放参赛者编号和选手 12
     int speak_game_count; //比赛轮数 2
     int speak_ref; //裁判数量
 };
