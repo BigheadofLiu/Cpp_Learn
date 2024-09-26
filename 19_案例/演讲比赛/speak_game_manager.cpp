@@ -130,9 +130,6 @@ cout<<"抽签完毕"<<endl;
 system("pause >nul");
 system("cls");
 }
-bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
-    return s1.m_score[0]>s2.m_score[0];
-}
 void speak_manager::start_speak(){
 std::cout<<"第"<<speak_game_count<<"轮比赛现在开始"<<endl;
 std::cout<<endl<<endl;
@@ -228,4 +225,7 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
     std::cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;
 	v_temp.clear();
     this->speak_game_count=2;
+}
+bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
+    return s1.m_score[0]>s2.m_score[0];
 }
