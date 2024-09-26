@@ -10,7 +10,13 @@
 #include "limits"
 #include<time.h>
 #include<windows.h>
+/*#include"my_compare.cpp"*/
 using namespace std;
+
+class mycompare_sort{
+public:
+    bool operator()(const speaker& s1, const speaker& s2);
+};
 
 class speak_manager{
     public:
@@ -24,12 +30,15 @@ class speak_manager{
     void start_game();  //开始比赛
     void start_draw();  //抽签函数
     void start_speak(); //
+    // class quene_grater{};
+    // bool operator()(speaker s1,speaker s2){};
  
     public:
     std::vector<speaker> v_all; //12个选手容器 12
     std::vector<speaker> v_g1; //第一轮容器 6
     std::vector<speaker> v_g2; //第二轮容器 3
     std::map<int,speaker> m_member; //存放参赛者编号和选手 12
-    int speak_game_count; //比赛轮数 2
+    static int speak_game_count; //比赛轮数 2
     int speak_ref; //裁判数量
 };
+

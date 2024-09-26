@@ -2,7 +2,7 @@
 using namespace std;
 #include<list>
 #include <string>
-/*×Ô¶¨ÒåÊı¾İÀàĞÍµÄÅÅĞò ĞèÒªÖ¸¶¨ÅÅĞò¹æÔò*/
+/*è‡ªå®šä¹‰æ•°æ®ç±»å‹çš„æ’åº éœ€è¦æŒ‡å®šæ’åºè§„åˆ™*/
 class person{
     public:
     person(string name,int age,int height){
@@ -15,7 +15,7 @@ class person{
     int age;
     int height;
 };
-void print_list(const list<person> &L){  //´òÓ¡
+void print_list(const list<person> &L){  //æ‰“å°
     for(list<person>::const_iterator it=L.begin();it!=L.end();it++){
        cout << it->name<< " "<<it->age<<" "<<it->height<<" ";
     }
@@ -23,20 +23,20 @@ void print_list(const list<person> &L){  //´òÓ¡
 }
 bool sort_list(person& p1, person& p2){
     if(p1.age==p2.age){
-        return p1.height>p2.height; //Èç¹ûÄêÁäÏàÍ¬ °´ÕÕÉı¸ß½µĞòÅÅÁĞ
+        return p1.height>p2.height; //å¦‚æœå¹´é¾„ç›¸åŒ æŒ‰ç…§å‡é«˜é™åºæ’åˆ—
     }else{
-        return p1.age<p2.age; //ÄêÁäÉıĞòÅÅÁĞ
+        return p1.age<p2.age; //å¹´é¾„å‡åºæ’åˆ—
     }
 }
 int main(){
     list<person> lst1;
-    person p1("Áõ±¸",55,180);
-    person p2("¹ØÓğ",45,170);
-    person p3("ÕÅ·É",40,190);
-    person p4("²Ü²Ù",60,175);
-    person p5("ËïÈ¨",50,165);
-    person p6("Ëï²ß",35,160);
-    person p7("ÖÜè¤",30,170);
+    person p1("åˆ˜å¤‡",55,180);
+    person p2("å…³ç¾½",45,170);
+    person p3("å¼ é£",40,190);
+    person p4("æ›¹æ“",60,175);
+    person p5("å­™æƒ",50,165);
+    person p6("å­™ç­–",35,160);
+    person p7("å‘¨ç‘œ",30,170);
     lst1.push_back(p1);
     lst1.push_back(p2);
     lst1.push_back(p3);
@@ -45,7 +45,7 @@ int main(){
     lst1.push_back(p6);
     lst1.push_back(p7);
     print_list(lst1);
-    // lst1.sort(); //Ä¬ÈÏÅÅĞò¹æÔò ¶Ô×Ô¶¨ÒåÀàĞÍÎŞĞ§
+    // lst1.sort(); //é»˜è®¤æ’åºè§„åˆ™ å¯¹è‡ªå®šä¹‰ç±»å‹æ— æ•ˆ
     // print_list(lst1);
     lst1.sort(sort_list);
     print_list(lst1);

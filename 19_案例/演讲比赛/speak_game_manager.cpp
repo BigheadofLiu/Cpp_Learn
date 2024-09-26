@@ -86,6 +86,7 @@ void speak_manager::create_speaker(){
 		sp.number=i+10087459;
 		// this->m_member=make_pair()
 		this->v_all.push_back(sp);
+		
 		// cout<<"name_need.size()"<<name_need.size()<<endl;
 	}
 }
@@ -109,7 +110,7 @@ void speak_manager::start_draw(){
 std::cout<<"开始第"<<this->speak_game_count<<"轮抽签"<<std::endl;
 // cout<<"------------------------"<<endl;
 cout<<"抽签后的顺序如下"<<std::endl;
-cout<<"----编号------姓名-------"<<endl;
+cout<<"编号"<<"       "<<"姓名"<<endl;
 if(this->speak_game_count==1){
 	random_shuffle(this->v_all.begin(),this->v_all.end());
     for (auto i = v_all.begin(); i !=v_all.end(); i++)
@@ -126,21 +127,28 @@ if(this->speak_game_count==1){
 	}
 }
 cout<<"抽签完毕"<<endl;
-system("pause");
-cout<<endl;
+system("pause >nul");
+system("cls");
 }
-
+bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
+    return s1.m_score[0]>s2.m_score[0];
+}
 void speak_manager::start_speak(){
-cout<<"第"<<speak_game_count<<"轮比赛现在开始"<<endl;
+std::cout<<"第"<<speak_game_count<<"轮比赛现在开始"<<endl;
+std::cout<<endl<<endl;
 vector<speaker> v_temp; //临时容器
-int s_num=0; //计数器
+// v_temp.resize(12);
+// int s_num=0; //计数器
 if(this->speak_game_count==1){
+	v_temp.resize(12);
 	v_temp=this->v_all;
 }else{
+	v_temp.resize(6);
 	v_temp=this->v_g1;
 }
 for (auto i = v_temp.begin(); i != v_temp.end(); i++)
-{	s_num++;
+{	
+	// s_num++;
     /*cout<<"----"<<s_num<<"----"<<endl;*/
 	deque<double> s_d;  //打分容器
 	for (int i = 0; i <speak_ref; i++)
@@ -157,31 +165,67 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 	double ave_score=sum_score/double(s_d.size());
 //    cout<<"平均成绩："<<ave_score<<endl;
 	i->m_score[this->speak_game_count-1]=ave_score;
+	s_d.clear();
 	/* code */
-	if (s_num%6==0)
-	{
-		cout<<"第"<< s_num/6 <<"小组比赛名次如下："<<endl;
-		cout<<"--编号--"<<"--姓名--"<<"--分数--"<<endl;
-		for (auto j=v_temp.begin();j!=v_temp.end();j++)
-		{
-			cout<<j->number<<" "<<j->name<<" "<<*j->m_score<<endl;
-
-		}
-		int s_count=0;
-		for (auto j = v_temp.begin(); j !=v_temp.end()&&s_count<3; j++,s_count++)
-		{
-			if (this->speak_game_count==1)
-			{
-				this->v_g1.push_back(*j);
-
-			}else{
-				this->v_g2.push_back(*j);
-			}
-		}
-		//  this->speak_game_count=2;
-	}
+	// if (s_num%6==0)
+	// {
+		// cout<<"第"<< s_num/6 <<"小组比赛成绩如下："<<endl;
+		// cout<<"--编号--"<<"--姓名--"<<"--分数--"<<endl;
+		// for (auto j=v_temp.begin();j!=v_temp.end();j++)
+		// {
+		// 	cout<<j->number<<" "<<j->name<<" "<<*j->m_score<<endl;
+		// 	// v_temp.pop_back();
+		// }	
 }
-    cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;
+	deque<speaker> d1;
+	deque<speaker> d2;
+	for(auto i=0;i<v_temp.size()/2&&i<v_temp.size();++i){
+				// cout<<v_temp[i].number<<" "<<v_temp[i].name<<" "<<*v_temp[i].m_score<<endl;
+				d1.push_back(v_temp[i]);  
+				// sort(d1.begin(),d1.end(),greater<>());
+	}
+	
+	for(auto i=v_temp.size()-v_temp.size()/2;i<v_temp.size();++i){
+				// std::cout<<v_temp[i].number<<" "<<v_temp[i].name<<" "<<*v_temp[i].m_score<<endl;
+				d2.push_back(v_temp[i]);
+			}
+
+		sort(d1.begin(),d1.end(),mycompare_sort());
+        sort(d2.begin(),d2.end(),mycompare_sort());
+		cout<<"-------------------------"<<endl;
+		std::cout<<"第1小组成绩如下:"<<endl;
+		cout<<"编号"<<"    "<<"姓名"<<"    "<<"分数"<<endl;
+		for(auto i=d1.begin();i!=d1.end();i++){
+			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
+		}
+
+		cout<<"-------------------------"<<endl;
+
+		std::cout<<"第2小组成绩如下:"<<endl;
+		for(auto i=d2.begin();i!=d2.end();i++){
+			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
+		}
+		// cout<<"-------------------------"<<endl;
+		
+
+
+
+		// int s_count=0;
+		// for (auto j = v_temp.begin(); j !=v_temp.end()&&s_count<3; j++,s_count++)
+		// {
+		// 	if (this->speak_game_count==1)
+		// 	{
+		// 		this->v_g1.push_back(*j);
+
+		// 	}else{
+		// 		this->v_g2.push_back(*j);
+		// 	}
+		// }
+		//  this->speak_game_count=2;
+		std::cout<<"-----------------"<<endl;
+		std::cout<<endl;
+	// }
+    std::cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;
 	v_temp.clear();
     this->speak_game_count=2;
 }
