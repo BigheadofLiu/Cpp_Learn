@@ -12,13 +12,8 @@
 #include<windows.h>
 /*#include"my_compare.cpp"*/
 using namespace std;
-
-class mycompare_sort{
-public:
-    bool operator()(const speaker& s1, const speaker& s2);
-};
-
 class speak_manager{
+    friend class mycompare_sort;
     public:
     speak_manager();
     ~speak_manager();
@@ -40,5 +35,10 @@ class speak_manager{
     std::map<int,speaker> m_member; //存放参赛者编号和选手 12
     static int speak_game_count; //比赛轮数 2
     int speak_ref; //裁判数量
+};
+//函数对象按分数排序
+class mycompare_sort{
+public:
+    bool operator()(const speaker& s1, const speaker& s2);
 };
 

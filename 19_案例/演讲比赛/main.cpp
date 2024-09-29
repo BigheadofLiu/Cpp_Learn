@@ -1,6 +1,5 @@
 #include"speak_game_manager.cpp"
-
-/*#include "speak_game_manager.h"*/
+// #include "speak_game_manager.h"
 int main(){
     srand(time(0));
     speak_manager sm;

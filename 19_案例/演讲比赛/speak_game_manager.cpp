@@ -1,10 +1,13 @@
 #include"speak_game_manager.h"
+int speak_manager::speak_game_count=1;
+/**错误揭露 非静态成员变量不支持类外直接访问 需要通过具体化的对象进行访问 */
 
 speak_manager::speak_manager(){ //必须写空实现 不然报错。。。这是为何
 this->init();
 this->create_speaker();
 }
 speak_manager::~speak_manager(){
+    //暂时空实现
 }
 int speak_manager::showmenu() {
         while (true) {
@@ -66,7 +69,7 @@ void speak_manager::init(){
 	this->v_g1.clear();
 	this->v_g2.clear();
 	this->m_member.clear();
-	this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
+	// this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
 	this->speak_ref=10;
 }
 void speak_manager::create_speaker(){
@@ -92,18 +95,22 @@ void speak_manager::create_speaker(){
 }
 void speak_manager::start_game(){
 	// create_speaker();  //构造函数中已实现
-	start_draw();
-    start_speak();
+	
 	//1.第一轮比赛
 	//抽签
 	//比赛
 	//晋级
+	start_draw();
+    start_speak();
 
 	//2.第二轮比赛
 	//抽签
 	//比赛
 	//晋级
 	//保存分数
+	start_draw();
+    start_speak();
+	
 }
 void speak_manager::start_draw(){
 //抽签
@@ -115,14 +122,14 @@ if(this->speak_game_count==1){
 	random_shuffle(this->v_all.begin(),this->v_all.end());
     for (auto i = v_all.begin(); i !=v_all.end(); i++)
 	{	
-		cout<<i->number<<"----"<<i->name<<std::endl;
+		cout<<i->number<<"    "<<i->name<<std::endl;
 		/* code */
 	}	
 }else{
 	random_shuffle(v_g1.begin(),v_g1.end());
 	for (auto i = v_g1.begin(); i !=v_g1.end(); i++)
 	{	
-		cout<<i->number<<"----"<<i->name<<std::endl;
+		cout<<i->number<<"    "<<i->name<<std::endl;
 		/* code */
 	}
 }
@@ -132,10 +139,11 @@ system("cls");
 }
 void speak_manager::start_speak(){
 std::cout<<"第"<<speak_game_count<<"轮比赛现在开始"<<endl;
-std::cout<<endl<<endl;
+// std::cout<<endl<<endl;
 vector<speaker> v_temp; //临时容器
 // v_temp.resize(12);
 // int s_num=0; //计数器
+while(true){
 if(this->speak_game_count==1){
 	v_temp.resize(12);
 	v_temp=this->v_all;
@@ -143,6 +151,7 @@ if(this->speak_game_count==1){
 	v_temp.resize(6);
 	v_temp=this->v_g1;
 }
+
 for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 {	
 	// s_num++;
@@ -174,6 +183,8 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 		// 	// v_temp.pop_back();
 		// }	
 }
+if(this->speak_game_count==1){
+	//第一轮比赛
 	deque<speaker> d1;
 	deque<speaker> d2;
 	for(auto i=0;i<v_temp.size()/2&&i<v_temp.size();++i){
@@ -195,6 +206,15 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 		for(auto i=d1.begin();i!=d1.end();i++){
 			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
 		}
+		std::cout<<"恭喜以下选手晋级下一轮比赛"<<endl;
+		d1.pop_back();
+		d1.pop_back();
+		d1.pop_back();
+		for(auto i=d1.begin();i!=d1.end();i++){
+			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
+			*i->m_score=0;
+			this->v_g1.push_back(*i);
+		}
 
 		cout<<"-------------------------"<<endl;
 
@@ -202,30 +222,79 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 		for(auto i=d2.begin();i!=d2.end();i++){
 			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
 		}
+		std::cout<<"恭喜以下选手晋级下一轮比赛"<<endl;
+		d2.pop_back();
+		d2.pop_back();
+		d2.pop_back();
+		for(auto i=d2.begin();i!=d2.end();i++){
+			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
+			// *i->m_score=0;
+			this->v_g1.push_back(*i);
+		}
+
+
 		// cout<<"-------------------------"<<endl;
-		
-
-
-
 		// int s_count=0;
 		// for (auto j = v_temp.begin(); j !=v_temp.end()&&s_count<3; j++,s_count++)
 		// {
 		// 	if (this->speak_game_count==1)
 		// 	{
 		// 		this->v_g1.push_back(*j);
-
 		// 	}else{
 		// 		this->v_g2.push_back(*j);
 		// 	}
 		// }
 		//  this->speak_game_count=2;
-		std::cout<<"-----------------"<<endl;
+		cout<<"-------------------------"<<endl;
 		std::cout<<endl;
 	// }
     std::cout<<"第"<<this->speak_game_count<<"轮比赛结束"<<endl;
 	v_temp.clear();
     this->speak_game_count=2;
+	cout<<"以下选手进入下轮比赛："<<endl;
+	for(auto i=v_g1.begin();i!=v_g1.end();i++){
+		std::cout<<i->number<<" "<<i->name<<" "<<endl;
+	}
+	// continue;
+	break;
+}else{
+	//第二轮比赛
+	deque<speaker> d3;
+	// std::cout<<"开始第二轮比赛"<<endl;
+	// cout<<this->speak_game_count<<endl;
+	for(auto i=v_temp.begin();i!=v_temp.end();i++){
+		// std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
+		d3.push_back(*i);
+	}
+	sort(d3.begin(),d3.end(),mycompare_sort());
+	std::cout<<"第二轮比赛结果如下："<<endl;
+	// cout<<this->speak_game_count<<endl;
+	for(auto i=d3.begin();i!=d3.end();i++){
+		std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
+		// d3.push_back(*i);
+	}
+	d3.pop_back();
+	d3.pop_back();
+	d3.pop_back();
+	for(auto i=d3.begin();i!=d3.end();i++){
+		// std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
+		// d3.push_back(*i);
+		this->v_g2.push_back(*i);
+	}
+	cout<<"本次比赛前三名为："<<endl;
+	for (auto i = v_g2.begin(); i != v_g2.end(); i++)
+	{
+		std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
+		/* code */
+	}
+    system("pause >nul");
+	break;
 }
+}
+}
+
 bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
-    return s1.m_score[0]>s2.m_score[0];
+	// if(speak_manager::speak_game_count)
+    return s1.m_score[speak_manager::speak_game_count-1] > s2.m_score[speak_manager::speak_game_count-1];
 }
+
