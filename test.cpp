@@ -64,11 +64,16 @@
 //     return 0;
 // }
 
-#include<iostream>
-#include<vector>
+// #include<iostream>
+// #include<vector>
 using namespace std;
+#include<fstream>
 int main(){
-    vector<int> v1;
-    v1.push_back(1);
-    v1.
+    // vector<int> v1;
+    // v1.push_back(1);
+    // v1.
+    fstream fst1;
+    fst1.open("test.txt",ios::out);
+    fst1<<"111111"<<endl;
+    fst1.close();
 }

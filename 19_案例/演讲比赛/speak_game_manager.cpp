@@ -71,6 +71,7 @@ void speak_manager::init(){
 	this->m_member.clear();
 	// this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
 	this->speak_ref=10;
+	this->file_is_empty=1;  //默认1为空 0为非空
 }
 void speak_manager::create_speaker(){
 	string name_need="ABCDEFGHIJKL";
@@ -287,14 +288,56 @@ if(this->speak_game_count==1){
 		std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
 		/* code */
 	}
+	speak_manager::save_speaker(v_g2);
     system("pause >nul");
+	system("cls");
+	this->choice(this->showmenu());
 	break;
 }
 }
 }
-
 bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
 	// if(speak_manager::speak_game_count)
     return s1.m_score[speak_manager::speak_game_count-1] > s2.m_score[speak_manager::speak_game_count-1];
 }
 
+void speak_manager::save_speaker(vector<speaker> &v) {
+    fstream  fst1;
+    fst1.open("win_speaker.txt",ios::out|ios::app);
+	for (auto i = v.begin(); i != v.end(); i++)
+	{
+		// fst1.write((const char*)&i,sizeof(*i));
+		// /* code */
+		fst1<<i->name<<" "<<i->m_score[0]<<i->m_score[1]<<endl;
+	}
+	// fst1<<"11111"<<endl;
+	fst1.close();
+	std::cout<<"保存成功"<<endl;
+}
+void speak_manager::get_speaker(){
+	fstream fst2;
+	fst2.open("win_speaker.txt",ios::in);
+	if (!fst2.is_open())
+	{	
+		std::cout<<"文件打开失败"<<endl;
+		this->file_is_empty=1; //文件标致置空	
+		fst2.close();
+		/* code */
+	}
+	char ch;
+	fst2>>ch;
+	if(fst2.eof()){
+		cout<<"文件存在但是为空"<<endl;
+		this->file_is_empty=1;
+		fst2.close();
+		return;
+	}else{
+		this->file_is_empty=0;
+		fst2.putback(ch);
+		
+	}
+
+
+	
+
+}

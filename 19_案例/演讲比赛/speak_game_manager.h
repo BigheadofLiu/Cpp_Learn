@@ -10,6 +10,8 @@
 #include "limits"
 #include<time.h>
 #include<windows.h>
+#include<fstream>
+#include<fstream>
 /*#include"my_compare.cpp"*/
 using namespace std;
 class speak_manager{
@@ -27,6 +29,8 @@ class speak_manager{
     void start_speak(); //
     // class quene_grater{};
     // bool operator()(speaker s1,speaker s2){};
+    void save_speaker(vector<speaker>&);
+    void get_speaker();
  
     public:
     std::vector<speaker> v_all; //12个选手容器 12
@@ -35,6 +39,7 @@ class speak_manager{
     std::map<int,speaker> m_member; //存放参赛者编号和选手 12
     static int speak_game_count; //比赛轮数 2
     int speak_ref; //裁判数量
+    bool file_is_empty;
 };
 //函数对象按分数排序
 class mycompare_sort{
