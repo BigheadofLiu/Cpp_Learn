@@ -51,7 +51,8 @@ switch (c)
             this->show_speaker();
 			break;
 		case 3:  //清空记录
-			cout<<"清空"<<endl;
+			/*cout<<"清空"<<endl;*/
+            this->clear_speak();
 			break;
 		case 0:  //退出系统
 		    sys_exit();
@@ -309,7 +310,7 @@ void speak_manager::save_speaker(vector<speaker> &v) {
 	{
 		// fst1.write((const char*)&i,sizeof(*i));
 		// /* code */
-		fst1<<i->name<<" "/*<<i->m_score[0]*/<<" "<<i->m_score[1]<<","<<endl;   //因为v_g1、v_g2分开存储两轮分数，这里只写入第二轮分数
+		fst1<<","<<i->name<<" "/*<<i->m_score[0]*/<<" "<<i->m_score[1]<<","<<endl;   //因为v_g1、v_g2分开存储两轮分数，这里只写入第二轮分数
 	}
 	// fst1<<"11111"<<endl;
 	fst1.close();
@@ -365,7 +366,6 @@ void speak_manager::show_speaker(){
     system("pause >nul");
     system("cls");
 }
-
 void speak_manager::clear_speak() {
     cout<<"确认清空？"<<endl;
     cout<<"----1.确认----"<<endl;
