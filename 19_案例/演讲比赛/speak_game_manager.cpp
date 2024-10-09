@@ -47,7 +47,8 @@ switch (c)
 		start_game();
 			break;
 		case 2:  //查看记录  
-			cout<<"查看"<<endl;
+			/*cout<<"查看"<<endl;*/
+            this->show_speaker();
 			break;
 		case 3:  //清空记录
 			cout<<"清空"<<endl;
@@ -68,7 +69,7 @@ void speak_manager::init(){
 	this->v_all.clear();
 	this->v_g1.clear();
 	this->v_g2.clear();
-	this->m_member.clear();
+	this->save_member.clear();
 	// this->speak_game_count=1;  //再模块化为一个init()成员函数的意义是什么？
 	this->speak_ref=10;
 	this->file_is_empty=1;  //默认1为空 0为非空
@@ -289,6 +290,7 @@ if(this->speak_game_count==1){
 		/* code */
 	}
 	speak_manager::save_speaker(v_g2);
+
     system("pause >nul");
 	system("cls");
 	this->choice(this->showmenu());
@@ -300,7 +302,6 @@ bool mycompare_sort::operator()(const speaker &s1, const speaker &s2) {
 	// if(speak_manager::speak_game_count)
     return s1.m_score[speak_manager::speak_game_count-1] > s2.m_score[speak_manager::speak_game_count-1];
 }
-
 void speak_manager::save_speaker(vector<speaker> &v) {
     fstream  fst1;
     fst1.open("win_speaker.txt",ios::out|ios::app);
@@ -308,7 +309,7 @@ void speak_manager::save_speaker(vector<speaker> &v) {
 	{
 		// fst1.write((const char*)&i,sizeof(*i));
 		// /* code */
-		fst1<<i->name<<" "<<i->m_score[0]<<i->m_score[1]<<endl;
+		fst1<<i->name<<" "/*<<i->m_score[0]*/<<" "<<i->m_score[1]<<","<<endl;   //因为v_g1、v_g2分开存储两轮分数，这里只写入第二轮分数
 	}
 	// fst1<<"11111"<<endl;
 	fst1.close();
@@ -320,7 +321,7 @@ void speak_manager::get_speaker(){
 	if (!fst2.is_open())
 	{	
 		std::cout<<"文件打开失败"<<endl;
-		this->file_is_empty=1; //文件标致置空	
+		this->file_is_empty=1; //文件标识置空	
 		fst2.close();
 		/* code */
 	}
@@ -332,12 +333,50 @@ void speak_manager::get_speaker(){
 		fst2.close();
 		return;
 	}else{
-		this->file_is_empty=0;
+		this->file_is_empty=0;  //文件标识非空
 		fst2.putback(ch);
-		
+		string data;  //创建字符串接收字符  string也是容器的一种
+		int index=0;
+
+		while(fst2>>data){
+			//对字符串进行处理
+			std::vector<string> v;
+			int pos=-1;
+			int start=0;
+			while(true){
+				pos=data.find(",",start);
+				if(pos==-1){
+					break;
+				}
+				string temp=data.substr(start,pos-start);
+				v.push_back(temp);
+				start=pos+1;
+			}
+			this->save_member.insert(make_pair(index,v));
+			index++;
+		}
+		fst2.close();
 	}
+}
+void speak_manager::show_speaker(){
+	for(auto i=0;i<this->save_member.size();i++){
+        cout<<this->save_member[i][0]<<this->save_member[i][1]<<endl;
+    }
+    system("pause >nul");
+    system("cls");
+}
 
-
-	
-
+void speak_manager::clear_speak() {
+    cout<<"确认清空？"<<endl;
+    cout<<"----1.确认----"<<endl;
+    cout<<"----2.取消----"<<endl;
+    auto select=0;
+    cin>>select;
+    if(select==1){
+        fstream fst("win_speaker.txt",ios ::trunc);  //删除文件
+        fst.close();
+        cout<<"清除成功"<<endl;
+    }
+    system("pause");
+    system("cls");
 }
