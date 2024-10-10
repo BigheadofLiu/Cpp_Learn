@@ -49,6 +49,7 @@ switch (c)
 		case 2:  //查看记录  
 			/*cout<<"查看"<<endl;*/
             this->show_speaker();
+
 			break;
 		case 3:  //清空记录
 			/*cout<<"清空"<<endl;*/
@@ -375,7 +376,10 @@ void speak_manager::clear_speak() {
     if(select==1){
         fstream fst("win_speaker.txt",ios ::trunc);  //删除文件
         fst.close();
-        cout<<"清除成功"<<endl;
+		this->init();
+		this->create_speaker();
+		this->get_speaker();
+        cout<<"清空成功"<<endl;
     }
     system("pause");
     system("cls");
