@@ -376,7 +376,7 @@ void speak_manager::clear_speak() {
     if(select==1){
         fstream fst("win_speaker.txt",ios ::trunc);  //删除文件
         fst.close();
-		this->init();
+		this->init();//置空后重新写入
 		this->create_speaker();
 		this->get_speaker();
         cout<<"清空成功"<<endl;
