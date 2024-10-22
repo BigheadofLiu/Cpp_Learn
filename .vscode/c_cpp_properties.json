@@ -15,7 +15,7 @@
       ],
       "compilerPath": "E:/soft/Environment/mingw64/bin/gcc.exe",
       "cStandard": "${default}",
-      "cppStandard": "${default}",
+      "cppStandard": "c++17",
       "intelliSenseMode": "windows-gcc-x86"
     }
   ],
