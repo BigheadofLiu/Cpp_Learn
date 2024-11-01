@@ -13,7 +13,6 @@ class order {
 public:
     order();
     void update_order();
-
     int order_num;
     struct is_empty{
         int busy[6][3];

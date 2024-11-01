@@ -5,6 +5,7 @@
 #ifndef VSCODE_TEACHER_H
 #define VSCODE_TEACHER_H
 #include "person.h"
+#include "order.h"
 class teacher:public person {
 public:
     //成员方法

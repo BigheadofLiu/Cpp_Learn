@@ -150,8 +150,8 @@ bool admin::check_order(int id, int type) {
 }
 void admin::show_computer_room() {
     cout<<"====    机房信息如下    ===="<<endl;
-    cout<<"机房数量为："<<v_computer_room.size()<<endl;
-    for_each(v_computer_room.begin(),v_computer_room.end(),print_computer_room);
+    cout<<"机房数量为："<<v_computer.size()<<endl;
+    for_each(v_computer.begin(),v_computer.end(),print_computer_room);
     cout<<"=========================="<<endl;
     system("pause >nul");
     system("cls");
@@ -199,12 +199,12 @@ void admin::init_computer() {
         fst.close();
         return;
     }
-    v_computer_room.clear();
+    this->v_computer.clear();
     computer_room c1;
     while(fst>>c1.com_id&&fst>>c1.com_max_num){
-        v_computer_room.push_back(c1);
+        v_computer.push_back(c1);
     }
-    cout<<"当前机房数量为："<<v_computer_room.size()<<endl;
+    cout<<"当前机房数量为："<<v_computer.size()<<endl;
     fst.close();
     }
 

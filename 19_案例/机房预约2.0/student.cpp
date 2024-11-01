@@ -22,9 +22,9 @@ void student::main_menu() {
         cout << "\t\t |                                |\n";
         cout << "\t\t |           1.申请预约           |\n";
         cout << "\t\t |                                |\n";
-        cout << "\t\t |           2.查看自身           |\n";
+        cout << "\t\t |           2.查看自己预约           |\n";
         cout << "\t\t |                                |\n";
-        cout << "\t\t |           3.查看所有           |\n";
+        cout << "\t\t |           3.查看所有预约         |\n";
         cout << "\t\t |                                |\n";
         cout << "\t\t |           4.取消预约           |\n";
         cout << "\t\t |                                |\n";
@@ -137,7 +137,7 @@ void student::cancel_order() {
         if (select == 0) {
             cout << "本次操作已取消" << endl;
             break;
-        }else if (select>0&&select<index){
+        }else if (select>0&&select<=index){
             cancel_order.order_map[cancel_v[select-1]]["status"]="0";
             cancel_order.update_order();
             cout<<"取消成功！"<<endl;
@@ -223,6 +223,7 @@ void student::show_all_order() {
 }
 
 void student::init_computerRoom() {
+    this->v_computer.clear();
     fstream fst;
     fst.open(COMPUTER_FILE,ios::in);
     computer_room com1;

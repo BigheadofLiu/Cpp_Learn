@@ -31,7 +31,7 @@ public:
 
     vector<student> v_stu;  //学生容器
     vector<teacher> v_tea;  //老师容器
-    vector<computer_room> v_computer;
+    vector<computer_room> v_computer;  //机房容器
 };
 void print_order_student(student &);
 void print_order_teacher(teacher &);
