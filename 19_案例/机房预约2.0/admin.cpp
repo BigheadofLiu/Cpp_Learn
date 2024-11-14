@@ -4,23 +4,25 @@
 
 #include "admin.h"
 void print_order_student(student& s){
-    cout<<"学号："<<s.s_id<<" 姓名："<<s.name<<"密码："<<s.password<<endl;
+    cout<<"学号："<<s.s_id<<" "<<" 姓名："<<s.name<<" "<<" 密码："<<s.password<<endl;
 }
 
 void print_order_teacher(teacher& t){
-    cout<<"工号："<<t.t_id<<" 姓名："<<t.name<<"密码："<<t.password<<endl;
+    cout<<"工号："<<t.t_id<<" "<<" 姓名："<<t.name<<" "<<"密码："<<t.password<<endl;
 }
 void print_computer_room(computer_room &c){
     cout<<"机房编号："<<c.com_id<<"最大容量为："<<c.com_max_num<<endl;
 }
 admin::admin() {
-
+    /*this->init_computer();*/ //初始化机房信息
+    //如果写了有参构造函数，默认构造函数不会执行
 }
 
 admin::admin(string name, string pwd) {
     this->name=name;
     this->password=pwd;
     this->init_vector();
+    this->init_computer();
 }
 
 void admin::main_menu() {
@@ -59,15 +61,10 @@ void admin::add_order() {
         file_name=STUDENT_FILE;
         tip = "请输入学号： ";
         errorTip = "学号重复，请重新输入";
-        /* cout<<"请输入学号："<<endl;
-        cin>>id; */
-
-    }else
-    {   file_name=TEACHER_FILE;
+    }else{
+        file_name=TEACHER_FILE;
         tip = "请输入职工编号：";
         errorTip = "职工号重复，请重新输入";
-        /* cout<<"请输入职工编号："<<endl;
-        cin>>id; */
     }
     fst1.open(file_name,ios::out|ios::app);
     if(!fst1.is_open()){
@@ -94,7 +91,7 @@ void admin::add_order() {
     fst1<<id<<" "<<name<<" "<<psd<<endl;//写入文件
     cout<<"添加成功"<<endl;
     this->init_vector(); //更新容器
-    system("pause");
+    system("pause >nul");
     system("cls");
     fst1.close();
 }
@@ -124,7 +121,7 @@ void admin::show_order() {
 
 void admin::clear_order_file() {
     fstream fst;
-    fst.open(ORDER_FILE,ios::trunc);
+    fst.open(ORDER_FILE,ios ::out|ios::trunc);
     fst.close();
     cout<<"所有预约记录已清除"<<endl;
     system("pause >nul");
@@ -138,15 +135,15 @@ bool admin::check_order(int id, int type) {
                 return true;
             }
         }
-    }else
-    {
+        return false;
+    }else{
         for(auto it=v_tea.begin();it!=v_tea.end();it++){
             if(it->t_id==id){
                 return true;
             }
         }
+        return false;
     }
-    return false;
 }
 void admin::show_computer_room() {
     cout<<"====    机房信息如下    ===="<<endl;
@@ -156,9 +153,6 @@ void admin::show_computer_room() {
     system("pause >nul");
     system("cls");
 }
-/*void admin::manage_order() {
-
-}*/
 
 void admin::init_vector() {
     fstream fst2;
@@ -200,11 +194,11 @@ void admin::init_computer() {
         return;
     }
     this->v_computer.clear();
-    computer_room c1;
-    while(fst>>c1.com_id&&fst>>c1.com_max_num){
-        v_computer.push_back(c1);
+    computer_room com{};
+    while(fst>>com.com_id&&fst>>com.com_max_num){
+        v_computer.push_back(com);
     }
-    cout<<"当前机房数量为："<<v_computer.size()<<endl;
+    /*cout<<"当前机房数量为："<<v_computer.size()<<endl;*/
     fst.close();
     }
 

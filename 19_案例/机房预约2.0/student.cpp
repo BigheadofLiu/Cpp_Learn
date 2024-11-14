@@ -31,18 +31,22 @@ void student::main_menu() {
         cout << "\t\t |           0.注销登陆           |\n";
         cout << "\t\t |                                |\n";
         cout << "\t\t ----------------------------------\n";
-        cout << "请输入您的选择" << endl;
+        cout << "请输入您的选择：";
     }
 }
 
 void student::apply_order() {
-    cout<<"==============================="<<endl;
     cout<<"开放预约日为周一至周五"<<endl;
     cout<<"请选择需要预约的时间"<<endl;
+    cout<<"==============================="<<endl;
     cout<<"1.周一"<<endl;
+    cout<<"      "<<endl;
     cout<<"2.周二"<<endl;
+    cout<<"      "<<endl;
     cout<<"3.周三"<<endl;
+    cout<<"      "<<endl;
     cout<<"4.周四"<<endl;
+    cout<<"      "<<endl;
     cout<<"5.周五"<<endl;
     cout<<"==============================="<<endl;
     int time_week;
@@ -100,30 +104,30 @@ void student::cancel_order() {
         system("cls");
         return;
     }
-    bool flag = 0;
+    bool flag = false;
     vector<int> cancel_v;
     int index = 1;
     cout << "以下已预约或已审核记录可取消：" << endl;
-    for (int i = 0; i < cancel_order.order_num; i++) {
+    for (int i = 1; i <=cancel_order.order_num; i++) {
         if (atoi(cancel_order.order_map[i]["stu_id"].c_str()) == this->s_id) {
-            if (cancel_order.order_map[i]["status"] == "1" || cancel_order.order_map[i]["status"] == "2") {
-                flag = 1;
+            if (cancel_order.order_map[i]["state"] == "1" || cancel_order.order_map[i]["state"] == "2") {
+                flag = true;
                 cancel_v.push_back(i);
                 cout << index++ << ":" << endl;
-                cout << "预约时间（周）:" << cancel_order.order_map[i]["time_week"];
-                cout << "预约时间（天）:" << (cancel_order.order_map[i]["time_day"] == "1" ? "上午" : "下午");
-                cout << "机房号：" << cancel_order.order_map[i]["room_id"];
-                string status = "状态：";
-                if (cancel_order.order_map[i][status] == "1") {
-                    status += "审核中";
+                cout << "预约时间（周）:" << "周"<<cancel_order.order_map[i]["time_week"]<<" ";
+                cout << "预约时间（天）:" << (cancel_order.order_map[i]["time_day"] == "1" ? "上午" : "下午")<<" ";
+                cout << "机房号：" << cancel_order.order_map[i]["room_id"]<<" ";
+                string state = "状态：";
+                if (cancel_order.order_map[i]["state"] == "1") {
+                    state += "审核中";
                 } else {
-                    status += "已预约";
+                    state += "已预约";
                 }
-                cout << status << endl;
+                cout << state << endl;
             }
         }
     }
-    if (flag == 0) {
+    if (!flag) {
         cout << "当前暂无可取消预约" << endl;
         system("pause >nul");
         system("cls");
@@ -138,7 +142,7 @@ void student::cancel_order() {
             cout << "本次操作已取消" << endl;
             break;
         }else if (select>0&&select<=index){
-            cancel_order.order_map[cancel_v[select-1]]["status"]="0";
+            cancel_order.order_map[cancel_v[select-1]]["state"]="0";
             cancel_order.update_order();
             cout<<"取消成功！"<<endl;
             break;
@@ -149,6 +153,10 @@ void student::cancel_order() {
             continue;
         }
     }
+    //测试order_map输出(出现空白行)
+//    for(int i=1;i<=cancel_order.order_num;i++){
+//        cout<<
+//    }
     system("pause >nul");
     system("cls");
     return;
@@ -161,26 +169,31 @@ void student::show_my_order() {
         return;
     }
     int flag;
+    int index=1;
     for(auto i=1;i<=my_order.order_num;i++){
         if(atoi(my_order.order_map[i]["stu_id"].c_str())==this->s_id){
             flag=1;
-            std::cout<<"预约时间："<<my_order.order_map[i]["time_week"];
-            std::cout<<"预约时间段："<<my_order.order_map[i]["time_day"];
-            std::cout<<"预约人id："<<my_order.order_map[i]["stu_id"];
-            std::cout<<"预约人姓名："<<my_order.order_map[i]["stu_name"];
-            std::cout<<"预约机房id："<<my_order.order_map[i]["room_id"];
+            index++;
+            cout<<"==============================="<<endl;
+            cout<<"第"<<index<<"条记录:"<<endl;
+            std::cout<<"预约时间："<<"星期"<<my_order.order_map[i]["time_week"]<<endl;
+            std::cout<<"预约时间段："<<((my_order.order_map[i]["time_day"]=="1")? "上午" : "下午") <<endl;
+            std::cout<<"预约人id："<<my_order.order_map[i]["stu_id"]<<endl;
+            std::cout<<"预约人姓名："<<my_order.order_map[i]["stu_name"]<<endl;
+            std::cout<<"预约机房id："<<my_order.order_map[i]["room_id"]<<endl;
             /*std::cout<<"预约状态："<<my_order.order_map[i]["state"];*/
-            string status="状态:";
+            string state="状态:";
             if(my_order.order_map[i]["state"]=="1"){
-                status+="审核中";
+                state+="审核中";
             }else if(my_order.order_map[i]["state"]=="2"){
-                status+="已审核，预约成功";
+                state+="已审核，预约成功";
             }else if(my_order.order_map[i]["state"]=="3"){
-                status+="已取消";
-            }else if(my_order.order_map[i]["state"]=="4"){
-                status+="审核失败，已拒绝";
+                state+="审核失败，已拒绝";
+            }else if(my_order.order_map[i]["state"]=="0"){
+                state+="已取消";
             }
-            std::cout<<status<<endl;
+            std::cout<<state<<endl;
+
         }
         if(flag==0){
             cout<<"未找到"<<this->name<<"的预约记录"<<endl;
@@ -189,6 +202,8 @@ void student::show_my_order() {
             return;
         }
     }
+    system("pause >nul");
+    system("cls");
 }
 void student::show_all_order() {
     order all_order;
@@ -200,25 +215,25 @@ void student::show_all_order() {
     }
     for(auto i=1;i<=all_order.order_num;i++){
         cout<<"第"<<i<<"条预约记录"<<endl;
-        std::cout<<"预约时间："<<all_order.order_map[i]["time_week"];
-        std::cout<<"预约时间段："<<all_order.order_map[i]["time_day"];
-        std::cout<<"预约人id："<<all_order.order_map[i]["stu_id"];
-        std::cout<<"预约人姓名："<<all_order.order_map[i]["stu_name"];
-        std::cout<<"预约机房id："<<all_order.order_map[i]["room_id"];
-        string statue="状态:";
+        std::cout<<"预约时间: 周"<<all_order.order_map[i]["time_week"]<<" ";
+        std::cout<<"预约时间段:"<<((all_order.order_map[i]["time_day"])=="1"?"上午":"下午")<<" ";
+        std::cout<<"预约人id:"<<all_order.order_map[i]["stu_id"]<<" ";;
+        std::cout<<"预约人姓名："<<all_order.order_map[i]["stu_name"]<<" ";
+        std::cout<<"预约机房id："<<all_order.order_map[i]["room_id"]<<" ";
+        string state="状态:";
         if(all_order.order_map[i]["state"]=="1"){
-            statue+="审核中";
+            state+="审核中";
         }
         else if(all_order.order_map[i]["state"]=="2"){
-            statue+="已审核，预约成功";
+            state+="已审核，预约成功";
         }
         else if(all_order.order_map[i]["state"]=="3"){
-            statue+="已取消";
+            state+="审核失败，已拒绝";
         }
         else if(all_order.order_map[i]["state"]=="4"){
-            statue+="审核失败，已拒绝";
+            state+="已取消";
         }
-        std::cout<<statue<<endl;
+        std::cout<<state<<endl;
     }
 }
 

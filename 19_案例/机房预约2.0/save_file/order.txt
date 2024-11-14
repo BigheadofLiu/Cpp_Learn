@@ -1,0 +1,7 @@
+week_time: week_day: room_id:6 stu_id:1 stu_name:001 state:0
+week_time: week_day: room_id:3 stu_id:1 stu_name:001 state:1
+week_time: week_day: room_id:3 stu_id:1 stu_name:001 state:1
+week_time: week_day: room_id:4 stu_id:2 stu_name:002 state:3
+week_time: week_day: room_id:6 stu_id:2 stu_name:002 state:1
+week_time: week_day: room_id:6 stu_id:2 stu_name:002 state:2
+

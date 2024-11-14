@@ -41,7 +41,7 @@ int main() {
                 cout << "输入有误，重新输入" << endl;
                 system("pause >nul");
                 system("cls");
-                break;
+                continue;
         }
         system("pause >nul");
         return 0;
@@ -54,7 +54,7 @@ void show_menu(){
         std::cout << "\t\t          请输入您的身份" << endl;
         std::cout << "\t\t -------------------------------\n";
         std::cout << "\t\t|                               |\n";
-        std::cout << "\t\t|          1.学生代表             |\n";
+        std::cout << "\t\t|          1.学    生            |\n";
         std::cout << "\t\t|                               |\n";
         std::cout << "\t\t|          2.老    师            |\n";
         std::cout << "\t\t|                               |\n";
@@ -131,6 +131,7 @@ void teacher_menu(person* &teach){
         teacher* tea=(teacher*) teach;
         int select;
         tea->main_menu();
+        cin >> select;
         switch(select){
             case 1:
                 tea->show_all_order();
@@ -172,27 +173,28 @@ void login_check(/*std::string file_name,*/const std::string& file_name, int typ
             /*int s_id;
             string s_name;
             string s_pwd;*/
-            cout<<"请输入学生id:"<<endl;
+            cout<<"请输入学生id:";
             cin>>id;
-            cout<<"请输入姓名:"<<endl;
+            cout<<"请输入姓名:";
             cin>>name;
-            cout<<"请输入密码:"<<endl;
+            cout<<"请输入密码:";
             cin>>pwd;
             while (fst1 >> s_id && fst1 >> s_name && fst1 >> s_pwd) {
                 if (s_id == id && s_name == name && s_pwd == pwd) {
                     cout << "身份验证成功" << endl;
-                    system("pause >nul");
+                    /*system("pause >nul");*/
                     system("cls");
                     check_in = new student(id, name, pwd);
                     //*check_in->main_menu();*//*
                     student_menu(check_in);
                     fst1.close();
                     return;
-                }else{
+                }/*else{
                     int sel=0;
                     cout<<"===  身份验证失败  ==="<<endl;
-                    cout<<s_id<<" "<<s_name<<" "<<s_pwd<<endl;
-                    cout<<id<<" "<<name<<" "<<pwd<<endl;
+                    //测试输出代码
+                    *//*cout<<s_id<<" "<<s_name<<" "<<s_pwd<<endl;
+                    cout<<id<<" "<<name<<" "<<pwd<<endl;*//*
                     cout<<"1.重新尝试登录"<<endl;
                     cout<<"0.退出"<<endl;
                     cin>>sel;
@@ -204,8 +206,25 @@ void login_check(/*std::string file_name,*/const std::string& file_name, int typ
                     }
                     system("cls");
                     continue;
-                }
+                }*/
             }
+            int sel=0;
+            cout<<"===  身份验证失败  ==="<<endl;
+            //测试输出代码
+            /*cout<<s_id<<" "<<s_name<<" "<<s_pwd<<endl;
+              cout<<id<<" "<<name<<" "<<pwd<<endl;*/
+            cout<<"1.重新尝试登录"<<endl;
+            cout<<"0.退出"<<endl;
+            cin>>sel;
+            if (sel == 0) {
+                cout<<"按任意键退出"<<endl;
+                system("pause >nul");
+                system("cls");
+                return ;
+            }
+            system("cls");
+            continue;
+
         } else if (type == 2) {
             //教职工身份认证
             /*int s_id;
@@ -233,29 +252,29 @@ void login_check(/*std::string file_name,*/const std::string& file_name, int typ
                     system("pause >nul");
                     system("cls");
                     continue;*/
-                else{
+                /*else{
                     cout<<"身份验证失败"<<endl;
                     cout<<"请重新尝试登录"<<endl;
                     system("pause >nul");
                     system("cls");
                     continue;
-                }
+                }*/
             }
+            cout<<"身份验证失败"<<endl;
+            cout<<"请重新尝试登录"<<endl;
+            system("pause >nul");
+            system("cls");
+            continue;
         } else if (type == 3) {
             //管理员身份认证
-            // int s_id;
-            /*string s_name;
-            string s_pwd;*/
-            //*cout<<"请输入账号id:"<<endl;
             cout<<"请输入管理员id:"<<endl;
             cin>>id;
-            /*cin>>name;*/
             cout<<"请输入密码:"<<endl;
             cin>>pwd;
-            while (fst1 >> s_name && fst1 >> s_pwd) {
-                if (s_name == name && s_pwd == pwd) {
+            while (fst1 >> s_id && fst1 >> s_pwd) {
+                if (s_id == id && s_pwd == pwd) {
                     cout << "身份验证成功" << endl;
-                    system("pause >nul");
+                    /*system("pause >nul");*/
                     system("cls");
                     check_in = new admin(name, pwd);
                     // person.manager_order();
@@ -265,20 +284,29 @@ void login_check(/*std::string file_name,*/const std::string& file_name, int typ
                     admin_menu(check_in);
                     return;
                 }
-                else{
+                /*else{
                     cout<<"身份验证失败"<<endl;
                     cout<<"请重新尝试登录"<<endl;
+                    //结果比对测试
+                    *//*cout<<id<<pwd<<endl;
+                    cout<<s_id<<s_pwd<<endl;*//*
                     system("pause >nul");
+
                     system("cls");
                     continue;
-                }
+                }*/
             }
-        }else{
-            cout<<"输入有误，重新输入"<<endl;
-            system("pause");
+            cout<<"身份验证失败"<<endl;
+            cout<<"请重新尝试登录"<<endl;
+            system("pause >nul");
             system("cls");
-
-            }
+            continue;
+        }/*else{
+            cout<<"输入有误，重新输入"<<endl;
+            system("pause >nul");
+            system("cls");
+            break;
+            }*/
         }
     }
 

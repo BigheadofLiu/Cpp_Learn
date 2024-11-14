@@ -22,7 +22,7 @@ public:
     void main_menu() override;  //管理员菜单
     void add_order();  //添加预约
     void show_order();  //查看预约
-    void clear_order_file();  //清除预约
+    static void clear_order_file();  //清除预约
     void init_vector(); //初始化容器
     bool check_order(int,int);  //检查预约
     void show_computer_room();  //查看机房信息

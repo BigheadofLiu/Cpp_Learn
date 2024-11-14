@@ -16,6 +16,6 @@ public:
     void valid_order();
 public:
     //成员属性
-    int t_id;
+    int t_id{};
 };
 #endif //VSCODE_TEACHER_H
