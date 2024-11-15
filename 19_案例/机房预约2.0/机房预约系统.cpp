@@ -75,7 +75,7 @@ void admin_menu(person* &ad){
         cin >> select;
         switch(select){
             case 1:
-                man->add_order();
+                man->add_order_id();
                 break;
             case  2:
                 man->show_order();

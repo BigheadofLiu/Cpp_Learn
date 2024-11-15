@@ -43,11 +43,14 @@ void admin::main_menu() {
     cout << "请输入您的选择" << endl;
 }
 
-void admin::add_order() {
-    cout << "=======请输入添加账号的类型=======" << endl;
-    cout << "1、添加学生" << endl;
-    cout << "2、添加老师" << endl;
-    cout << "==============================" << endl;
+void admin::add_order_id() {
+    cout << "==请输入添加账号的类型==" << endl;
+    cout<<"              "<<endl;
+    cout << "1、添  加  学  生" << endl;
+    cout<<"              "<<endl;
+    cout << "2、添  加  老  师" << endl;
+    cout<<"              "<<endl;
+    cout << "====================" << endl;
     int select=0;
     string file_name;
     int id;
