@@ -1,8 +1,8 @@
 #include"iostream"
 using namespace std;
 #include"string.h"
-#define MAX_SIZE 1000   //define çš„æ•°æ®åé¢ä¸éœ€è¦è·Ÿ ; ä¸ç„¶ä¼šæŠ¥é”™
-#pragma execution_character_set("utf-8")  
+#define MAX_SIZE 1000   //define µÄÊı¾İºóÃæ²»ĞèÒª¸ú ; ²»È»»á±¨´í
+// #pragma execution_character_set("GBK")  
 
 struct person{
 	string p_name;
@@ -35,7 +35,7 @@ int main(){
     {
     showmenu();
     cin>>select;
-      //åˆå§‹åŒ–æ•°é‡
+      //³õÊ¼»¯ÊıÁ¿
 
     switch(select){
         case 1:addperson(&pm);  break;
@@ -44,11 +44,11 @@ int main(){
         case 4:modifyperson(&pm);  break;
         case 5:searchperson(&pm);  break;    
         case 6:delete_all_person(&pm);  break;
-        case 0:cout<<"é€€å‡ºé€šè®¯å½•ç³»ç»Ÿ"<<endl;
-        cout<<"æŒ‰ä»»æ„é”®é€€å‡º"<<endl;
+        case 0:cout<<"ÍË³öÍ¨Ñ¶Â¼ÏµÍ³"<<endl;
+        cout<<"°´ÈÎÒâ¼üÍË³ö"<<endl;
         system("pause >nul");
         return 0;break;
-        default:system("cls");cout<<"è¾“å…¥æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥ï¼"<<endl;
+        default:system("cls");cout<<"ÊäÈëÓĞÎó£¬ÖØĞÂÊäÈë£¡"<<endl;
         break;
 }
 }
@@ -56,36 +56,36 @@ int main(){
 void showmenu(){
     system("color 25");
     cout<<"*********************************************"<<endl;
-    cout<<"************æ¬¢è¿ä½¿ç”¨é€šè®¯å½•ç®¡ç†ç³»ç»Ÿ***********"<<endl;
+    cout<<"************»¶Ó­Ê¹ÓÃÍ¨Ñ¶Â¼¹ÜÀíÏµÍ³***********"<<endl;
     cout<<"*********************************************"<<endl;
-    cout<<"*************1.æ·»åŠ è”ç³»äºº********************"<<endl;
-    cout<<"*************2.æ˜¾ç¤ºè”ç³»äºº********************"<<endl;
-    cout<<"*************3.åˆ é™¤è”ç³»äºº********************"<<endl;
-    cout<<"*************4.ä¿®æ”¹è”ç³»äºº********************"<<endl;    
-    cout<<"*************5.æŸ¥è¯¢è”ç³»äºº********************"<<endl;   
-    cout<<"*************6.æ¸…ç©ºè”ç³»äºº********************"<<endl;
-    cout<<"*************0.é€€å‡ºç³»ç»Ÿ**********************"<<endl;
+    cout<<"*************1.Ìí¼ÓÁªÏµÈË********************"<<endl;
+    cout<<"*************2.ÏÔÊ¾ÁªÏµÈË********************"<<endl;
+    cout<<"*************3.É¾³ıÁªÏµÈË********************"<<endl;
+    cout<<"*************4.ĞŞ¸ÄÁªÏµÈË********************"<<endl;    
+    cout<<"*************5.²éÑ¯ÁªÏµÈË********************"<<endl;   
+    cout<<"*************6.Çå¿ÕÁªÏµÈË********************"<<endl;
+    cout<<"*************0.ÍË³öÏµÍ³**********************"<<endl;
     cout<<"*********************************************"<<endl;
-    cout<<"è¯·é€‰æ‹©åŠŸèƒ½ï¼š";
+    cout<<"ÇëÑ¡Ôñ¹¦ÄÜ£º";
 }
 void addperson(person_manager *pm){
     system("cls");
     if (pm->p_size==MAX_SIZE)
     {
-        cout<<"é€šè®¯å½•å·²æ»¡ï¼Œæ— æ³•æ·»åŠ "<<endl;
+        cout<<"Í¨Ñ¶Â¼ÒÑÂú£¬ÎŞ·¨Ìí¼Ó"<<endl;
         return;
        
     }else{
     string name="";
-    cout<<"è¯·è¾“å…¥åå­—ï¼š"<<endl;
+    cout<<"ÇëÊäÈëÃû×Ö£º"<<endl;
     cin>>name;
-    // cin >> pm->p_list[pm->p_size]->name;  //æ— æ³•ç›´æ¥cinç»“æ„ä½“å˜é‡
+    // cin >> pm->p_list[pm->p_size]->name;  //ÎŞ·¨Ö±½Ócin½á¹¹Ìå±äÁ¿
     pm->p_list[pm->p_size].p_name=name;
     system("cls");
 
-    cout<<"è¯·è¾“å…¥æ€§åˆ«ï¼š"<<endl;
-    cout<<"1.ç”·"<<endl;
-    cout<<"2.å¥³"<<endl;
+    cout<<"ÇëÊäÈëĞÔ±ğ£º"<<endl;
+    cout<<"1.ÄĞ"<<endl;
+    cout<<"2.Å®"<<endl;
     int sex=0;
     while (true)
     {
@@ -95,7 +95,7 @@ void addperson(person_manager *pm){
         pm->p_list[pm->p_size].p_sex=sex;
         break;
     }else{
-        cout<<"è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥"<<endl;
+        cout<<"ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë"<<endl;
         // continue;        
     }
    
@@ -104,19 +104,19 @@ void addperson(person_manager *pm){
     system("cls");
 
     int age=0;
-    cout<<"è¯·è¾“å…¥å¹´é¾„ï¼š"<<endl;
+    cout<<"ÇëÊäÈëÄêÁä£º"<<endl;
     cin>>age;
     pm->p_list[pm->p_size].p_age=age;
     system("cls");
 
     long long number=0;
-    cout<<"è¯·è¾“å…¥ç”µè¯å·ç ï¼š"<<endl;
+    cout<<"ÇëÊäÈëµç»°ºÅÂë£º"<<endl;
     cin>>number;
     pm->p_list[pm->p_size].p_number=number;
     system("cls");
 
     string addr="";
-    cout<<"è¯·è¾“å…¥é€šè®¯åœ°å€ï¼š"<<endl;
+    cout<<"ÇëÊäÈëÍ¨Ñ¶µØÖ·£º"<<endl;
     cin>>addr;
     pm->p_list[pm->p_size].p_address=addr;
     system("cls");
@@ -125,8 +125,8 @@ void addperson(person_manager *pm){
     
     }
 
-    cout<<"æ·»åŠ æˆåŠŸ"<<endl;
-    cout<<"æŒ‰ä»»æ„é”®é€€å‡º"<<endl;
+    cout<<"Ìí¼Ó³É¹¦"<<endl;
+    cout<<"°´ÈÎÒâ¼üÍË³ö"<<endl;
     system("pause >nul");
     system("cls");
 }
@@ -134,8 +134,8 @@ void showperson(person_manager *pm){
     // cout<<pm->p_size<<endl;
     while (pm->p_size==0)
     {
-        cout<<"è¿˜æ²¡æœ‰è”ç³»äººï¼Œè¯·æ·»åŠ åæŸ¥çœ‹ï¼";
-        cout<<"æŒ‰ä»»æ„é”®é€€å‡º"<<endl;
+        cout<<"»¹Ã»ÓĞÁªÏµÈË£¬ÇëÌí¼Óºó²é¿´£¡";
+        cout<<"°´ÈÎÒâ¼üÍË³ö"<<endl;
         system("pause >nul");
         system("cls");
         return;
@@ -143,17 +143,17 @@ void showperson(person_manager *pm){
         /* code */
         
     }
-    // cout<<"åºå·"<<"\t|"<<"å§“å"<<"\t|"<<"æ€§åˆ«    "<<"\t|"<<"å¹´é¾„    "<<"\t|"<<"ç”µè¯    "<<"\t|"<<"åœ°å€    "<<endl;
+    // cout<<"ĞòºÅ"<<"\t|"<<"ĞÕÃû"<<"\t|"<<"ĞÔ±ğ    "<<"\t|"<<"ÄêÁä    "<<"\t|"<<"µç»°    "<<"\t|"<<"µØÖ·    "<<endl;
     for (int i = 0; i < pm->p_size; i++)
     {
-        // cout<<"ç¬¬"<<i+1<<"ä¸ªè”ç³»äººä¿¡æ¯å¦‚ä¸‹ï¼š"<<endl;
-        cout<<"åºå·ï¼š"<<i+1<<"\t|"<<"å§“å:"<<pm->p_list[i].p_name<<"\t|"<<"æ€§åˆ«ï¼š"<<(pm->p_list[i].p_sex==1?"ç”·":"å¥³")<<"\t|"<<"å¹´é¾„ï¼š"<<pm->p_list[i].p_age<<"\t|"<<"ç”µè¯:"<<pm->p_list[i].p_number<<"\t|"<<"åœ°å€:"<<pm->p_list[i].p_address<<"\t|"<<endl;
+        // cout<<"µÚ"<<i+1<<"¸öÁªÏµÈËĞÅÏ¢ÈçÏÂ£º"<<endl;
+        cout<<"ĞòºÅ£º"<<i+1<<"\t|"<<"ĞÕÃû:"<<pm->p_list[i].p_name<<"\t|"<<"ĞÔ±ğ£º"<<(pm->p_list[i].p_sex==1?"ÄĞ":"Å®")<<"\t|"<<"ÄêÁä£º"<<pm->p_list[i].p_age<<"\t|"<<"µç»°:"<<pm->p_list[i].p_number<<"\t|"<<"µØÖ·:"<<pm->p_list[i].p_address<<"\t|"<<endl;
         // pm->p_size++;        
         /* code */
-        //æ³¨æ„ä¸‰ç›®è¿ç®—ç¬¦çš„åº”ç”¨  (æ¡ä»¶1?ç»“æœ1:ç»“æœ2) ç”¨()æ‹¬èµ·æ¥ï¼ï¼ï¼
+        //×¢ÒâÈıÄ¿ÔËËã·ûµÄÓ¦ÓÃ  (Ìõ¼ş1?½á¹û1:½á¹û2) ÓÃ()À¨ÆğÀ´£¡£¡£¡
     }
-    cout<<"å…¨éƒ¨è”ç³»äººä¿¡æ¯å·²æ˜¾ç¤º"<<endl;
-    cout<<"æŒ‰ä»»æ„é”®é€€å‡º"<<endl;
+    cout<<"È«²¿ÁªÏµÈËĞÅÏ¢ÒÑÏÔÊ¾"<<endl;
+    cout<<"°´ÈÎÒâ¼üÍË³ö"<<endl;
     system("pause >nul");
     system("cls");
     
@@ -168,18 +168,18 @@ int isexist(person_manager *pm,string name){
             break;
         }
         }
-    // cout<<"æŸ¥æ— æ­¤äºº"<<endl;
+    // cout<<"²éÎŞ´ËÈË"<<endl;
     return -1;
             
         }
 
 void deleteperson(person_manager *pm){
     string name1;
-    cout<<"è¯·è¾“å…¥è¦åˆ é™¤çš„è”ç³»äººå§“å:"<<endl;
+    cout<<"ÇëÊäÈëÒªÉ¾³ıµÄÁªÏµÈËĞÕÃû:"<<endl;
     cin>>name1;
     int i=isexist(pm,name1);
     if(i==-1){
-        cout<<"æŸ¥æ— æ­¤äºº"<<endl;
+        cout<<"²éÎŞ´ËÈË"<<endl;
         system("pause >nul");
         system("cls");
         return;
@@ -188,103 +188,93 @@ void deleteperson(person_manager *pm){
         pm->p_list[j]=pm->p_list[j+1];
     }
     pm->p_size--;
-    cout<<"åˆ é™¤æˆåŠŸ"<<endl;
+    cout<<"É¾³ı³É¹¦"<<endl;
     system("pause >nul");
     system("cls");
 }
 void modifyperson(){}
 void searchperson(person_manager *pm){
     string name2;
-    cout<<"è¯·é€‰æ‹©éœ€è¦æŸ¥æ‰¾çš„è”ç³»äººåå­—"<<endl;
+    cout<<"ÇëÑ¡ÔñĞèÒª²éÕÒµÄÁªÏµÈËÃû×Ö"<<endl;
     cin>>name2;
     for (int i = 0; i < pm->p_size; i++)
     {
         if (pm->p_list[i].p_name==name2)
         {
-            cout<<"æŸ¥è¯¢åˆ°ä»¥ä¸‹ä¿¡æ¯ï¼š"<<endl;
-            cout<<"åºå·ï¼š"<<i+1<<"\t|"<<"å§“å:"<<pm->p_list[i].p_name<<"\t|"<<"æ€§åˆ«ï¼š"<<(pm->p_list[i].p_sex==1?"ç”·":"å¥³")<<"\t|"<<"å¹´é¾„ï¼š"<<pm->p_list[i].p_age<<"\t|"<<"ç”µè¯:"<<pm->p_list[i].p_number<<"\t|"<<"åœ°å€:"<<pm->p_list[i].p_address<<"\t|"<<endl;
-            cout<<"æŒ‰ä»»æ„é”®ç»§ç»­"<<endl;
+            cout<<"²éÑ¯µ½ÒÔÏÂĞÅÏ¢£º"<<endl;
+            cout<<"ĞòºÅ£º"<<i+1<<"\t|"<<"ĞÕÃû:"<<pm->p_list[i].p_name<<"\t|"<<"ĞÔ±ğ£º"<<(pm->p_list[i].p_sex==1?"ÄĞ":"Å®")<<"\t|"<<"ÄêÁä£º"<<pm->p_list[i].p_age<<"\t|"<<"µç»°:"<<pm->p_list[i].p_number<<"\t|"<<"µØÖ·:"<<pm->p_list[i].p_address<<"\t|"<<endl;
+            cout<<"°´ÈÎÒâ¼ü¼ÌĞø"<<endl;
             system("pause >nul");
             system("cls");
             return;
             /* code */
         }
-       
-        
         /* code */
     }
-    cout<<"æœªæ‰¾åˆ°æŒ‡å®šè”ç³»äºº"<<endl;
+    cout<<"Î´ÕÒµ½Ö¸¶¨ÁªÏµÈË"<<endl;
     system("pause >nul");
     system("cls");
 }
 void modifyperson(person_manager *pm){
     string name3;
-    cout<<"è¯·è¾“å…¥éœ€è¦ä¿®æ”¹ä¿¡æ¯äººçš„åå­—ï¼š";
+    cout<<"ÇëÊäÈëĞèÒªĞŞ¸ÄĞÅÏ¢ÈËµÄÃû×Ö£º";
     cin>>name3;
     for (int i = 0; i < pm->p_size; i++)
     {
         if (pm->p_list[i].p_name==name3)
         {
-            cout<<"å·²å®šä½åˆ°"<<name3<<endl;
-            cout<<"å¼€å§‹ä¿®æ”¹ç›¸å…³ä¿¡æ¯"<<endl;
-
+            cout<<"ÒÑ¶¨Î»µ½"<<name3<<endl;
+            cout<<"¿ªÊ¼ĞŞ¸ÄÏà¹ØĞÅÏ¢"<<endl;
             int tag=0;
             int age=0;
-            cout<<"æ˜¯å¦éœ€è¦ä¿®æ”¹å¹´é¾„ï¼Ÿ"<<endl;
-            cout<<"1.ä¿®æ”¹"<<endl;
-            cout<<"2.ä¸ä¿®æ”¹"<<endl;
+            cout<<"ÊÇ·ñĞèÒªĞŞ¸ÄÄêÁä£¿"<<endl;
+            cout<<"1.ĞŞ¸Ä"<<endl;
+            cout<<"2.²»ĞŞ¸Ä"<<endl;
             cin>>tag;
             if(tag==1){
-            cout<<"è¯·è¾“å…¥å¹´é¾„ï¼š"<<endl;
+            cout<<"ÇëÊäÈëÄêÁä£º"<<endl;
             cin>>age;
             pm->p_list[i].p_age=age;
-            cout<<"å¹´é¾„ä¿®æ”¹æˆåŠŸ"<<endl;
+            cout<<"ÄêÁäĞŞ¸Ä³É¹¦"<<endl;
             system("cls");
-            }
-            
-            cout<<"æ˜¯å¦éœ€è¦ä¿®æ”¹ç”µè¯ï¼Ÿ"<<endl;
-            cout<<"1.ä¿®æ”¹"<<endl;
-            cout<<"2.ä¸ä¿®æ”¹"<<endl;
+            }   
+            cout<<"ÊÇ·ñĞèÒªĞŞ¸Äµç»°£¿"<<endl;
+            cout<<"1.ĞŞ¸Ä"<<endl;
+            cout<<"2.²»ĞŞ¸Ä"<<endl;
             cin>>tag;
             if(tag==1){
             long long number=0;
-            cout<<"è¯·è¾“å…¥ç”µè¯å·ç ï¼š"<<endl;
+            cout<<"ÇëÊäÈëµç»°ºÅÂë£º"<<endl;
             cin>>number;
             pm->p_list[i].p_number=number;
-             cout<<"ç”µè¯ä¿®æ”¹æˆåŠŸ"<<endl;
+             cout<<"µç»°ĞŞ¸Ä³É¹¦"<<endl;
             system("cls");
             }
-
-            cout<<"æ˜¯å¦éœ€è¦ä¿®æ”¹åœ°å€ï¼Ÿ"<<endl;
-            cout<<"1.ä¿®æ”¹"<<endl;
-            cout<<"2.ä¸ä¿®æ”¹"<<endl;
+            cout<<"ÊÇ·ñĞèÒªĞŞ¸ÄµØÖ·£¿"<<endl;
+            cout<<"1.ĞŞ¸Ä"<<endl;
+            cout<<"2.²»ĞŞ¸Ä"<<endl;
             cin>>tag;
             if(tag==1){
             string addr="";
-            cout<<"è¯·è¾“å…¥é€šè®¯åœ°å€ï¼š"<<endl;
+            cout<<"ÇëÊäÈëÍ¨Ñ¶µØÖ·£º"<<endl;
             cin>>addr;
             pm->p_list[i].p_address=addr;
-            cout<<"é€šè®¯åœ°å€ä¿®æ”¹æˆåŠŸ"<<endl;
+            cout<<"Í¨Ñ¶µØÖ·ĞŞ¸Ä³É¹¦"<<endl;
             system("cls");
             }
-
             return;
-
-
           /* code */
         }
         
         /* code */
     }
-    cout<<"æœªæ‰¾åˆ°æŒ‡å®šäººå‘˜ä¿¡æ¯"<<endl;
+    cout<<"Î´ÕÒµ½Ö¸¶¨ÈËÔ±ĞÅÏ¢"<<endl;
     system("pause");
     return;
-
 }
-
 void delete_all_person(person_manager *pm){
     pm->p_size=0;
-    cout<<"åˆ é™¤æˆåŠŸ"<<endl;
+    cout<<"É¾³ı³É¹¦"<<endl;
     system("pause >nul");
     return;
 }
