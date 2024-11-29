@@ -3,57 +3,57 @@ using namespace std;
  class my_exception{
     public:
     my_exception(){
-        cout<<"myexceptionÄ¬ÈÏ¹¹Ôì"<<endl;
+        cout<<"myexceptioné»˜è®¤æž„é€ "<<endl;
     }
     my_exception(const my_exception& e){
-        cout<<"myexception¿½±´¹¹Ôì"<<endl;
+        cout<<"myexceptionæ‹·è´æž„é€ "<<endl;
     }
     ~my_exception(){
-        cout<<"myexceptionÎö¹¹º¯Êý"<<endl;
+        cout<<"myexceptionæžæž„å‡½æ•°"<<endl;
     }
  };
- void test01(){ //Ê¹ÓÃÆÕÍ¨¶ÔÏó½ÓÒì³£Öµ
+ void test01(){ //ä½¿ç”¨æ™®é€šå¯¹è±¡æŽ¥å¼‚å¸¸å€¼
     try{
         throw my_exception();
     }catch(my_exception e){
-        cout<<"ÆÕÍ¨º¯Êý½ÓÒì³£"<<endl;
+        cout<<"æ™®é€šå‡½æ•°æŽ¥å¼‚å¸¸"<<endl;
     }
 
-//Êä³ö
+//è¾“å‡º
 /* 
-myexceptionÄ¬ÈÏ¹¹Ôì
-myexception¿½±´¹¹Ôì
-ÆÕÍ¨º¯Êý½ÓÒì³£
-myexceptionÎö¹¹º¯Êý
-myexceptionÎö¹¹º¯Êý */
+myexceptioné»˜è®¤æž„é€ 
+myexceptionæ‹·è´æž„é€ 
+æ™®é€šå‡½æ•°æŽ¥å¼‚å¸¸
+myexceptionæžæž„å‡½æ•°
+myexceptionæžæž„å‡½æ•° */
  }
 
  void test02(){
-    //Ê¹ÓÃ¶ÔÏóÖ¸Õë½ÓÒì³£
+    //ä½¿ç”¨å¯¹è±¡æŒ‡é’ˆæŽ¥å¼‚å¸¸
     try{
         throw my_exception();
     }catch(my_exception* e){
-        cout<<"¶ÔÏóÖ¸Õë½Ó"<<endl;
-        delete e;   //¼ÇµÃÊÍ·ÅÖ¸Õë
+        cout<<"å¯¹è±¡æŒ‡é’ˆæŽ¥"<<endl;
+        delete e;   //è®°å¾—é‡Šæ”¾æŒ‡é’ˆ
     }
-// Êä³ö£º
-// myexceptionÄ¬ÈÏ¹¹Ôì
+// è¾“å‡ºï¼š
+// myexceptioné»˜è®¤æž„é€ 
 // terminate called after throwing an instance of 'my_exception'
-// myexceptionÎö¹¹º¯Êý
+// myexceptionæžæž„å‡½æ•°
  }
 
  void test03(){
-    //¶ÔÏóÒýÓÃ½ÓÒì³£
+    //å¯¹è±¡å¼•ç”¨æŽ¥å¼‚å¸¸
     try{
         throw my_exception();
     }catch(my_exception &e){
-        cout<<"¶ÔÏóÖ¸Õë½Ó"<<endl;
+        cout<<"å¯¹è±¡æŒ‡é’ˆæŽ¥"<<endl;
         /* delete e; */
     }
-//Êä³ö
-// myexceptionÄ¬ÈÏ¹¹Ôì
-// ¶ÔÏóÖ¸Õë½Ó
-// myexceptionÎö¹¹º¯Êý
+//è¾“å‡º
+// myexceptioné»˜è®¤æž„é€ 
+// å¯¹è±¡æŒ‡é’ˆæŽ¥
+// myexceptionæžæž„å‡½æ•°
 
  }
 
