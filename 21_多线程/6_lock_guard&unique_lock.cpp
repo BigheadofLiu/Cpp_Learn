@@ -3,6 +3,7 @@
 #include<string>
 #include<memory>  //智能指针头文件
 #include <mutex>  //互斥量头文件
+#include "windows.h"
 /*
  *
 std::lock_guard 是 C++ 标准库中的一种互斥量封装类，用于保护共享数据，防止多个线程同时访问同一资源而导致的数据竞争问题。
@@ -28,7 +29,7 @@ unique_lock(mutex_type& m, adopt_lock_t) noexcept：构造函数，使用给定�
 int count=0;
 std::mutex m1;
 void auto_add(){
-    for(int i=0;i<100000;i++){
+    for(int i=0;i<3;i++){
 //        m1.lock(); //添加互斥锁
 //        count++;
 //        m1.unlock();
@@ -37,9 +38,9 @@ void auto_add(){
 //std::lock_guard<std::mutex> lg(m1);  //创建一个mutex类型的lock_guard容器lg存储m1(自动管理m1的生命周期)
 
 //使用unique_lock
-std::unique_lock<std::mutex> ul(m1/*,std::defer_lock*/); //添加defer_lock调用不自动上锁构造函数
+std::unique_lock<std::mutex> ul(m1,std::defer_lock); //添加defer_lock调用 不自动上锁构造函数
 //m1.lock();
-//std::this_thread::sleep_for(std::chrono::seconds(5));  //等待5s
+std::this_thread::sleep_for(std::chrono::seconds(5));  //等待5s
 count++;
 //m1.unlock();
     }

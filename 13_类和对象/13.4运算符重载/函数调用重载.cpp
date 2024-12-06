@@ -15,7 +15,6 @@ void fun1(){
     // a1.operator()(10,20);
     //等价于
     add(10,20);
-    
 }
 
 void add(int a,int b){
