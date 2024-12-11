@@ -1,7 +1,7 @@
 #include <iostream>
 #include <typeinfo> //using typeid
 #include <vector> //using vector
-using  namespace  std;
+//using  namespace  std;
 /*
  * auto关键字用来自动推导变量类型
  * 语法： auto name=value;
@@ -84,12 +84,12 @@ void fun03() {
 
     //auto主要用途
     //1.用于定义迭代器
-    vector<int> v;
+    std::vector<int> v;
     v.assign(10,1);
     for(auto i=v.begin();i!=v.end();i++){
     }
     //2*.用于泛型编程
-    
+    //略(wdnmd神马是泛型编程)
     }
 
 int main(){
