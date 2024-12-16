@@ -3,7 +3,7 @@
 using namespace std;
 
 //函数模板可以自动推倒参数类型 类模板不可以
-//类模板参数列表可以有默认参数
+//类模板参数列表可以有默认参数(c++11后函数模板也可以有默认参数)
 
 template<class T1,class T2=int>
 class Person{

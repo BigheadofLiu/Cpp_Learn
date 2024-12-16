@@ -28,6 +28,7 @@ class person3{
     T obj;
     void fun1(){
         obj.test1();
+
     }
     void fun2(){
         obj.test2();
@@ -35,9 +36,11 @@ class person3{
 };
 
 int main(){
-person1 p2;
-person3<person1>p1;
+// person1 p2;
+person3<person1> p1;
+// person2 p3;
+person3<person2> p2;
 p1.fun1();
-p1.fun2();
+p2.fun2();
 
 }
