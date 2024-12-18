@@ -2,7 +2,6 @@
  * C++ 11 标准发布之前，函数模板和类模板只能设定固定数量的模板参数。
  * C++11 标准对模板的功能进行了扩展，允许模板中包含任意数量的模板参数，这样的模板又称可变参数模板。
  *
- *
  *  使用 … 可变参数的过程中，需注意以下几点：
  *… 可变参数必须作为函数的最后一个参数，且一个函数最多只能拥有 1 个可变参数。
  *  可变参数的前面至少要有 1 个有名参数（例如上面例子中的 count 参数）；
@@ -51,13 +50,15 @@ void fun3(){
 
 //2.类模板可变参数
 //声明模板类demo(看不懂)
-template<typename... Values> class demo;
+template<typename... Values>
+class demo{};
 //继承式递归的出口
 template<> class demo<> {};
+
 //以继承的方式解包
 template<typename Head, typename... Tail>
 class demo<Head, Tail...>
-        : private demo<Tail...>
+        : private demo<Tail...>  //这里啥意思
 {
 public:
     demo(Head v, Tail... vtail) : m_head(v), demo<Tail...>(vtail...) {
@@ -71,6 +72,7 @@ void fun4(){
     demo<int, float, std::string> t(1, 2.34, "http://www.biancheng.net");
     return;
 }
+
 int main(){
 //fun2();
 //fun3();
