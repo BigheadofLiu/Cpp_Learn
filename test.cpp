@@ -66,14 +66,32 @@
 
 // #include<iostream>
 // #include<vector>
-using namespace std;
-#include<fstream>
+// using namespace std;
+// #include<fstream>
+// int main(){
+//     // vector<int> v1;
+//     // v1.push_back(1);
+//     // v1.
+//     fstream fst1;
+//     fst1.open("test.txt",ios::out);
+//     fst1<<"111111"<<endl;
+//     fst1.close();
+// }
+#include<iostream>
+class demo{
+    public:
+    int a;
+    void set_num(int a){
+        this->a=a;
+    }
+};
 int main(){
-    // vector<int> v1;
-    // v1.push_back(1);
-    // v1.
-    fstream fst1;
-    fst1.open("test.txt",ios::out);
-    fst1<<"111111"<<endl;
-    fst1.close();
+    int n=12;
+    int n[];
+    
+    demo d1;
+    d1.set_num(n);
+    std::cout<<d1.a<<std::endl;
+    n=14;
+    std::cout<<d1.a<<std::endl;
 }
