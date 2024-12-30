@@ -77,21 +77,23 @@
 //     fst1<<"111111"<<endl;
 //     fst1.close();
 // }
-#include<iostream>
-class demo{
-    public:
-    int a;
-    void set_num(int a){
-        this->a=a;
-    }
-};
-int main(){
-    int n=12;
-    int n[];
+
+// #include<iostream>
+// class demo{
+//     public:
+//     int a;
+//     void set_num(int a){
+//         this->a=a;
+//     }
+// };
+// int main(){
+//     int n=12;
+//     int n[];
     
-    demo d1;
-    d1.set_num(n);
-    std::cout<<d1.a<<std::endl;
-    n=14;
-    std::cout<<d1.a<<std::endl;
-}
+//     demo d1;
+//     d1.set_num(n);
+//     std::cout<<d1.a<<std::endl;
+//     n=14;
+//     std::cout<<d1.a<<std::endl;
+// }
+

@@ -16,7 +16,7 @@ using namespace std;
     try{
         throw my_exception();
     }catch(my_exception e){
-        cout<<"普通函数接异常"<<endl;
+        cout<<"普通对象接异常"<<endl;
     }
 
 //输出

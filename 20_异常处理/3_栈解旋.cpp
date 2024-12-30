@@ -6,10 +6,10 @@ class Data{
     public:
     Data(int data){
     this->m_data=data;
-    cout<<"data¹¹Ôìº¯Êı"<<endl;
+    cout<<"dataæ„é€ å‡½æ•°"<<endl;
     }
     ~Data(){
-    cout<<"dataÎö¹¹º¯Êı"<<endl;
+    cout<<"dataææ„å‡½æ•°"<<endl;
     }
 };
 int main(){
@@ -20,23 +20,23 @@ int main(){
         Data d3(300);
         throw 3;
     }catch(int e){
-        cout<<"ÕûĞÍÒì³£"<<endl;
+        cout<<"æ•´å‹å¼‚å¸¸"<<endl;
     }catch(char e){
-        cout<<"×Ö·ûĞÍÒì³£"<<endl;
+        cout<<"å­—ç¬¦å‹å¼‚å¸¸"<<endl;
     }catch(...){
-        cout<<"ÆäËûÒì³£"<<endl; 
+        cout<<"å…¶ä»–å¼‚å¸¸"<<endl; 
     }
     return 0;
 }
 /*
-data¹¹Ôìº¯Êı
-data¹¹Ôìº¯Êı
-data¹¹Ôìº¯Êı
-dataÎö¹¹º¯Êı
-dataÎö¹¹º¯Êı
-dataÎö¹¹º¯Êı
-ÕûĞÍÒì³£
+dataæ„é€ å‡½æ•°
+dataæ„é€ å‡½æ•°
+dataæ„é€ å‡½æ•°
+dataææ„å‡½æ•°
+dataææ„å‡½æ•°
+dataææ„å‡½æ•°
+æ•´å‹å¼‚å¸¸
 
-Òì³£Å×³öºó£¬Õ»ÉÏ¹¹ÔìµÄËùÓĞ¶ÔÏó£¬±»×Ô¶¯Îö¹¹
+å¼‚å¸¸æŠ›å‡ºåï¼Œæ ˆä¸Šæ„é€ çš„æ‰€æœ‰å¯¹è±¡ï¼Œè¢«è‡ªåŠ¨ææ„
 
 */
