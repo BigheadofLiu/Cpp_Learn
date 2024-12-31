@@ -2,6 +2,7 @@
 #include "vector"
 #include <map>
 #include <set>
+#include <utility>
 /*
  *
 for (declaration : expression)
@@ -55,14 +56,31 @@ void test05(){
     }
 }
 void test06(){
-    //元素只读（set）
-    std::set<int,std::string> s1{{1,"丁真"},{2,"王源"},{3,"芝士雪豹"},{4,"giao"}};
+    //元素只读（set或替他关联性容器）
+    std::set<std::pair<int,std::string>> s1{{1,"丁真"},{2,"王源"},{3,"芝士雪豹"},{4,"giao"}};
+    for(auto& i:s1){  //i推导为const pair& 原因：set容器中数据不可修改
+        std::cout<<i.first<<" "<<i.second<<" ";
+    }
+}
 
+std::vector<int> v1{1,2,3,4,5,6,7,8};
+ auto print(){
+    std::cout<<"this`s my print"<<std::endl;
+     return v1;
+}
+void test07(){
+    for(auto i:print()){
+        //print()被执行了一次
+        std::cout<<i<<" ";
+    }
+    std::cout<<std::endl;
 }
 int main(){
 //test01();
 //test02();
 //test03();
 //test04();
-test05();
+//test05();
+//test06();
+test07();
 }
