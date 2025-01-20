@@ -2,6 +2,7 @@
 // Created by ZYB on 2024/12/31.
 //
 #include "iostream"
+#include "assert.h"
 // C++11之前 const关键字表示： 只读 常量
 // 变量只读并不等价于常量
 // C++11中推出constexpr用于对const功能做分割：const表示只读 constexpr表示常量
@@ -11,7 +12,7 @@
 // 常量表达式和非常量表达式的计算时机不同，
 // 非常量表达式只能在程序运行阶段计算出结果，
 // 但是常量表达式的计算往往发生在程序的编译阶段，
-// 这可以极大提高程序的执行效率，
+// 这可以极大提高程序的执行效率，<关键>
 
 void test01(const int num1){
     const int num2=24;
@@ -79,7 +80,56 @@ constexpr int test04(){
         //while语句不可以出现
     }*/
     using int_64=int;  //using可以出现
-    typedef double ;
+    typedef int int_32; //typedef可以使用
+    static_assert(sizeof(int)==4);//static_assert可以使用
+/*    assert(sizeof(int)==4); //为啥assert可以使用？*/
     return num1+num2;
 }
+class demo2{
+public:
+/*    constexpr int a; 类内成员属性不可以使用constexpr*/
+      int a;
+      int b;
+      constexpr int/*auto*/ fun1(){ //害得是auto(使用auto类方法调用出错了）
+          constexpr int ce1=100;
+          return ce1;
+      }
+};
+void test5(){
+    //constexpr修饰类内成员函数
+    demo2 d1;
+    /*auto  ce1=d1.fun1();*/
+    constexpr int ce1=d1.fun1();
+}
+
+template<class T1>
+//模板使用constexpr有时会不生效
+constexpr T1 display(T1 t1){
+    return t1;
+}
+void test6(){
+    //constexpr修饰模板函数
+    demo2 d1{100,200};
+    /*constexpr*/ demo2 d2= display(d1); //传入的d1为变量 模板函数中constexpr没有生效
+    constexpr demo2 d3{111,222};
+    constexpr demo2 d4= display(d3); //传入常量 识别成功
+    constexpr int i1= display(100);
+}
+
+//constexpr修饰构造函数
+class demo3{
+public:
+    constexpr demo3(const int id,const int score):a(id),b(score){
+    }
+
+    int a;
+    int b;
+};
+void demo4(){
+constexpr demo3 d1(10,20);
+//d1.a++;
+//d1.b++; 常量构造函数参数无法修改
+std::cout<<d1.a<<" "<<d1.b<<std::endl;
+}
+
 

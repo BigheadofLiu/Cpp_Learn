@@ -7,6 +7,7 @@ int check_num( int const &a){
     cout<<a<<endl;
 }
 void check_sys(){
+    //静态断言 在编译时根据条件判断
     static_assert(sizeof(long) == 4,"告警：非64位系统！");
     cout<<"64 bit (int*) size:"<<sizeof(int*)<<endl;
     cout<<"64 bit (int) size:"<<sizeof(int)<<endl;
