@@ -28,11 +28,58 @@ void test01(const int num1){
     std::cout<<sizeof(array_2)/sizeof(array_2[0])<<" ";
     std::cout<<b<<" ";
 }
-void test02(int num1){
-    constexpr int num2=0;
-    
+
+// 常量表达式函数：普通函数/类成员函数、构造函数、模板函数
+// 1.普通函数
+// (1)必须有返回值 并且返回值必须是常量表达式
+// (2)使用之前必须先定义（声明没用0.0）
+// (3)整个函数的函数体中，不能出现非常量表达式之外的语句（using 指令、typedef
+//    语句以及 static_assert 断言、return语句除外）。
+
+constexpr int test02(/*constexpr*/ int num1){ //Function parameter cannot be constexpr constexpr不能用于函数形式参数
+//  constexpr int num2; //constexpr修饰的变量必须是常量表达式 不能为空值
+    constexpr int num2=1;
+    constexpr int num3=num2+2;
+
+    const int num4=num3+1;
+    return num4;
 }
+
+/*constexpr*/ class demo{ //constexpr无法修饰自定义类型
+public:
+    int  a;
+    int  b;
+};
+void test03(){
+    constexpr demo d1{1,2}; //success
+    constexpr int id=d1.a;
+    constexpr int num=d1.b;
+
+/*  d1.b++; //error   常量实例化对象属性也为常量
+    d1.a++; //error
+*/
+}
+
 int main(){
-    test01(10);
+    test01(10);  //constexpr variable 'num2' must be initialized by a constant expression
+}
+
+constexpr int test04(){
+    //普通常量函数内部无法使用常规语句（using typedef static_assert return）
+    constexpr int num1=10087459;
+    constexpr int num2=171164251;
+    for (int i=1;i<100;i++){
+        //c++17之后可以出现for循环
+//        std::cout<<num1<<" "<<num2<<std::endl;  // <<无法出现在普通常量函数
+    }
+    if(true){
+        //if语句可以出现
+    }
+   /* while(true){
+        //while语句不可以出现
+    }*/
+    using int_64=int;  //using可以出现
+    typedef double ;
+    return num1+num2;
 }
 

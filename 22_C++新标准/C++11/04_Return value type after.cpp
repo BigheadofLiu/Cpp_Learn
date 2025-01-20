@@ -23,10 +23,8 @@ auto add_2(T1 t1,T2 t2)-> decltype(t1+t2){  //auto会根据传入的参数不同
 
 template<class t1,class t2>
 auto add(t1 a,t2 b)->decltype(a+b){ //no error
-    
+
 }
-
-
 void fun1(){
     double a,b;
     a=2.1,b=3.3;
@@ -39,8 +37,6 @@ void fun1(){
     std::cout<<d<<std::endl;
 }
 void fun2(){
-
-
 }
 int main(){
     fun1();
