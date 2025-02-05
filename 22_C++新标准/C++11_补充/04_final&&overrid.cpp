@@ -2,6 +2,10 @@
 #include "string"
 using namespace std;
 //final 用于限制类或者虚函数被继承
+/*C++中增加了final关键字来限制某个类不能被继承，
+或者某个虚函数不能被重写，和Java的final关键字的功能是类似的。
+如果使用final修饰函数，只能修饰虚函数，并且要把final关键字放到类或者函数的后面。
+*/
 class father{
 public:
     virtual void fun1(){
