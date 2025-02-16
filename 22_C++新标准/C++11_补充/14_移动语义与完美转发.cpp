@@ -40,6 +40,11 @@ void test02(){
 
 /*std::forward<T>(t);
  * 使用forward用于保留参数的（左/右）值属性
+ * 函数原型：
+ * template <typename T>
+ * T&& forward(T& x) {  // x 是左值
+ * return static_cast<T&&>(x);
+   }
    当T为左值引用类型时，t将被转换为T类型的左值
    当T不是左值引用类型时，t将被转换为T类型的右值
 
@@ -57,7 +62,8 @@ cout<<"r value"<<endl;
 }
 template <class T>
 void fun1(T&& t){
-    get_vaule(t);
+//    get_vaule(t);
+    get_vaule(std::forward<T>(t)); //用于保留参数t的（左/右）值属性
 }
 void test03(){
     int a=10;
@@ -65,6 +71,9 @@ void test03(){
     fun1(1);   // l vaule
     fun1(a);  // l vaule
     fun1(b);  // l vaule
+    fun1(move(b)); //l vaule  why?
+
+//    fun1(std::forward<>())
 }
 int main(){
 //    test02();
