@@ -16,4 +16,8 @@ add_executable(22_C__
         C++11_补充/16_POD.cpp
         C++11_补充/17_默认函数控制.cpp
         C++11_补充/18_friend改进.cpp
-        C++11_补充/19_强枚举.cpp)
+        C++11_补充/19_强枚举.cpp
+        C++11_补充/20_非受限联合体.cpp
+        C++11_补充/21_share_ptr.cpp
+        C++11_补充/22_unique_ptr.cpp
+        C++11_补充/23_weak_ptr.cpp)
