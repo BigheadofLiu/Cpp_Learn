@@ -3,6 +3,7 @@
 //
 #include "iostream"
 #include "memory"
+#include <functional>
 using namespace std;
 //std::unique_ptr是一个独占型的智能指针，
 // 它不允许其他的智能指针共享其内部的指针，
@@ -38,9 +39,16 @@ void test02(){
 void test03(){
     std::shared_ptr<int> sp1(new int(100),[](int* p){delete p;});
     std::shared_ptr<int> sp2(new int[100],[](int* p){delete []p;});
-    us
-    std::unique_ptr<int> sp3(new int(100),[](int *p){delete p;});//error 需要手动指定删除类型
 
+
+//    std::unique_ptr<int,func_ptr> sp3(new int(100),[](int *p){delete p;});//error 需要手动指定删除类型
+    using func_ptr=void(*)(int*); //这啥，完全看不懂
+//    std::unique_ptr<int,func_ptr> sp3(new int(100),[](int *p){delete p;}); //success 在没有捕获任何变量的情况下正确
+//    std::unique_ptr<int,func_ptr> sp3(new int(100),[&](int *p){delete p;}); //error 捕获外部变量则报错
+//需要使用可调用对象包装器（神马玩意）
+// function<void(int*)> 函数包装器（作为删除器）
+    std::unique_ptr<int,function<void(int*)>> sp3(new int(100),[&](int *p){delete p;});
+    //这尼玛什么意思
 }
 int main(){
 //    test02();
