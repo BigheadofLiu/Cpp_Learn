@@ -20,4 +20,11 @@ add_executable(22_C__
         C++11_补充/20_非受限联合体.cpp
         C++11_补充/21_share_ptr.cpp
         C++11_补充/22_unique_ptr.cpp
-        C++11_补充/23_weak_ptr.cpp)
+        C++11_补充/23_weak_ptr.cpp
+        C++11_补充/24_chrono.cpp
+        C++11_补充/25_thread.cpp
+        C++11_补充/26_this_thread.cpp
+        C++11_补充/27_call_once.cpp
+        C++11_补充/28_mutex.cpp
+        C++11_补充/29_lock_guard.cpp
+        C++11_补充/30_条件变量.cpp)
