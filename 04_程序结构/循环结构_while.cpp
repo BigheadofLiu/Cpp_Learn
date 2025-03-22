@@ -2,10 +2,10 @@
 #include"math.h"
 #include<ctime>
 using namespace std;
-//²ÂÊı×ÖÓÎÏ· Ê¹ÓÃwhileÇ¶Ì×if
+//çŒœæ•°å­—æ¸¸æˆ ä½¿ç”¨whileåµŒå¥—if
 int main(){
-    srand(time(0));    //³õÊ¼»¯Ëæ»úÊıÖÖ×Ó£¬±ÜÃâÉú³ÉÎ±Ëæ»úÊı
-    int a = rand() % 100 + 1; //Ëæ»úÉú³É1-100ÄÚµÄÊı×Ö
+    srand(time(0));    //åˆå§‹åŒ–éšæœºæ•°ç§å­ï¼Œé¿å…ç”Ÿæˆä¼ªéšæœºæ•°
+    int a = rand() % 100 + 1; //éšæœºç”Ÿæˆ1-100å†…çš„æ•°å­—
     cout<<a<<endl;
     int b;
     bool tag=true;
@@ -14,15 +14,15 @@ int main(){
     cin>>b;
     if(b<a)
     {
-        cout<<"²ÂĞ¡ÁË"<<endl;
+        cout<<"çŒœå°äº†"<<endl;
         continue;
         /* code */
     }else if(b>a){
-        cout<<"²Â´óÁË"<<endl;
+        cout<<"çŒœå¤§äº†"<<endl;
         continue;
         
     }else{
-        cout<<"²Â¶ÔÁË"<<endl;
+        cout<<"çŒœå¯¹äº†"<<endl;
         tag=false;
     }
     }

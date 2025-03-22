@@ -10,6 +10,6 @@ int main(){
     case 9: cout<<"9"<<endl; break;
     case 8: cout<<"8"<<endl; break;
     case 7: cout<<"7"<<endl; break;
-    default: cout<<"ÊäÈë·Ç·¨"; break;
+    default: cout<<"è¾“å…¥éæ³•"; break;
     }
 }

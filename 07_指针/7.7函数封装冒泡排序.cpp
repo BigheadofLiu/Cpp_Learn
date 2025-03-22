@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-//Êı×éµÄ±¾ÖÊÊÇÒ»Æ¬Á¬ĞøµÄÄÚ´æ¿Õ¼äÊ¹ÓÃÖ¸Õë
+//æ•°ç»„çš„æœ¬è´¨æ˜¯ä¸€ç‰‡è¿ç»­çš„å†…å­˜ç©ºé—´ä½¿ç”¨æŒ‡é’ˆ
 void bubblesort (int *,int);
 void printfarr(int *,int);
 int main(){
@@ -14,7 +14,7 @@ void bubblesort(int *arr,int len){
 int *p1,*p2;
    
     // cout<<size<<endl;
-    int flag=len-1;  //ÉèÖÃ×î´ó±È½ÏÌËÊı=ÔªËØ¸öÊı
+    int flag=len-1;  //è®¾ç½®æœ€å¤§æ¯”è¾ƒè¶Ÿæ•°=å…ƒç´ ä¸ªæ•°
     while(flag){
     for (int i = 0; i <len -1; i++)
     {
@@ -23,13 +23,13 @@ int *p1,*p2;
         // cout<<int(p1)<<endl;
         if (*p1<*p2)
         {      
-            //½»»»
+            //äº¤æ¢
             int temp=*p1;
             *p1=*p2;
             *p2=temp;
                       
         }    
-        // cout<<"ÎÒÖ´ĞĞÁË"<<count<<"´Î"<<endl;
+        // cout<<"æˆ‘æ‰§è¡Œäº†"<<count<<"æ¬¡"<<endl;
              
         // cout<<flag<<endl;      
     }

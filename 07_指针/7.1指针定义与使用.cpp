@@ -2,7 +2,7 @@
 using namespace std;
 int main(){
     //指针的定义
-    int *p;
+    int* p;
     int a=100;
     p=&a;
 
