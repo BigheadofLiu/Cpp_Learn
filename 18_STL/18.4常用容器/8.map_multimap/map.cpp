@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include<map>
+//map底层是红黑树
 #include <string>
 /*
 map所有元素类型均为pair

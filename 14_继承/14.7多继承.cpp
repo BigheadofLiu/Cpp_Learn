@@ -23,7 +23,6 @@ void test01(){
 }
 int main(){
     test01();
-
 }
 /*
 class dad1      size(4):

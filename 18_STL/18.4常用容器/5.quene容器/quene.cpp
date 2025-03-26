@@ -1,7 +1,7 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-/*quene队列 先进先出*/
+/*quene队列 先进先出*/ //fifo
 /*
 1.基本构造:quene<T> qu,quene(const quene& qu)
 2.赋值:quene operator=(const quene &que)

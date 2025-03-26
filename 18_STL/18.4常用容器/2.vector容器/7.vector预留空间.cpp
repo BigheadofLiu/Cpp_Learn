@@ -10,7 +10,7 @@ void test01()
 
 	//预留空间  预留位置不初始化 不可访问
 	v.reserve(100000);
-
+    //resize(),resize并初始化为0
 	int num = 0;
 	int* p = NULL;
 	for (int i = 0; i < 100000; i++) {

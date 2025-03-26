@@ -1,5 +1,5 @@
 /*stack
-栈 先进后出
+栈 先进后出 //filo
 push 进栈
 pop  出栈
 */

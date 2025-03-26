@@ -24,12 +24,8 @@ class Person{
         p_high=new int(*(p.p_high)); //开辟另外一块堆区内存 深拷贝重点  只开辟一个成员属性的值即可 开辟对象的成员属性均会存储在堆区
         cout<<"我是自定义拷贝函数"<<endl;
     }
-
-
-
     int p_age;
     int* p_high;
-
     ~Person(){
     //在析构函数中对申请的堆区的内存进行释放
     if(p_high!=NULL){
