@@ -1,27 +1,27 @@
 #include"speak_game_manager.h"
 int speak_manager::speak_game_count=1;
-/**é”™è¯¯æ­éœ² éé™æ€æˆå‘˜å˜é‡ä¸æ”¯æŒç±»å¤–ç›´æ¥è®¿é—® éœ€è¦é€šè¿‡å…·ä½“åŒ–çš„å¯¹è±¡è¿›è¡Œè®¿é—® */
+/**´íÎó½ÒÂ¶ ·Ç¾²Ì¬³ÉÔ±±äÁ¿²»Ö§³ÖÀàÍâÖ±½Ó·ÃÎÊ ĞèÒªÍ¨¹ı¾ßÌå»¯µÄ¶ÔÏó½øĞĞ·ÃÎÊ */
 
-speak_manager::speak_manager(){ //å¿…é¡»å†™ç©ºå®ç° ä¸ç„¶æŠ¥é”™ã€‚ã€‚ã€‚è¿™æ˜¯ä¸ºä½•
+speak_manager::speak_manager(){ //±ØĞëĞ´¿ÕÊµÏÖ ²»È»±¨´í¡£¡£¡£ÕâÊÇÎªºÎ
 this->init();
 this->create_speaker();
 }
 speak_manager::~speak_manager(){
-    //æš‚æ—¶ç©ºå®ç°
+    //ÔİÊ±¿ÕÊµÏÖ
 }
 int speak_manager::showmenu() {
         while (true) {
         cout << "********************************************" << endl;
-        cout << "*************  æ¬¢è¿å‚åŠ æ¼”è®²æ¯”èµ› ************" << endl;
-        cout << "*************  1.å¼€å§‹æ¼”è®²æ¯”èµ›  *************" << endl;
-        cout << "*************  2.æŸ¥çœ‹å¾€å±Šè®°å½•  *************" << endl;
-        cout << "*************  3.æ¸…ç©ºæ¯”èµ›è®°å½•  *************" << endl;
-        cout << "*************  0.é€€å‡ºæ¯”èµ›ç¨‹åº  *************" << endl;
+        cout << "*************  »¶Ó­²Î¼ÓÑİ½²±ÈÈü ************" << endl;
+        cout << "*************  1.¿ªÊ¼Ñİ½²±ÈÈü  *************" << endl;
+        cout << "*************  2.²é¿´Íù½ì¼ÇÂ¼  *************" << endl;
+        cout << "*************  3.Çå¿Õ±ÈÈü¼ÇÂ¼  *************" << endl;
+        cout << "*************  0.ÍË³ö±ÈÈü³ÌĞò  *************" << endl;
         cout << "********************************************" << endl;
         int c=0;
         cin >> c;
         if (cin.fail()) {
-            cout << "éæ³•è¾“å…¥ï¼Œé‡æ–°è¾“å…¥ï¼";
+            cout << "·Ç·¨ÊäÈë£¬ÖØĞÂÊäÈë£¡";
             cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             Sleep(2000);
@@ -34,62 +34,62 @@ int speak_manager::showmenu() {
 }
 void speak_manager::sys_exit(){
 system("cls");
-std::cout<<"æ¬¢è¿ä¸‹æ¬¡ä½¿ç”¨";
+std::cout<<"»¶Ó­ÏÂ´ÎÊ¹ÓÃ";
 system("pause >nul");
 std::exit(0);
 }
 void speak_manager::choice(int c){
 switch (c)
 {
-        case 1:  //å¼€å§‹æ¯”èµ›
-        // cout<<"å¼€å§‹"<<endl;
+        case 1:  //¿ªÊ¼±ÈÈü
+        // cout<<"¿ªÊ¼"<<endl;
 		system("cls");
 		start_game();
 			break;
-		case 2:  //æŸ¥çœ‹è®°å½•  
-			/*cout<<"æŸ¥çœ‹"<<endl;*/
+		case 2:  //²é¿´¼ÇÂ¼  
+			/*cout<<"²é¿´"<<endl;*/
             this->show_speaker();
 
 			break;
-		case 3:  //æ¸…ç©ºè®°å½•
-			/*cout<<"æ¸…ç©º"<<endl;*/
+		case 3:  //Çå¿Õ¼ÇÂ¼
+			/*cout<<"Çå¿Õ"<<endl;*/
             this->clear_speak();
 			break;
-		case 0:  //é€€å‡ºç³»ç»Ÿ
+		case 0:  //ÍË³öÏµÍ³
 		    sys_exit();
 			break;
 		default:
-			cout<<"è¾“å…¥æœ‰è¯¯,é‡æ–°è¾“å…¥ï¼"<<endl;
+			cout<<"ÊäÈëÓĞÎó,ÖØĞÂÊäÈë£¡"<<endl;
 			Sleep(2000);
-			system("cls"); //æ¸…å±
+			system("cls"); //ÇåÆÁ
 			choice(speak_manager::showmenu());
 			break;
 }
 }
 void speak_manager::init(){
-	//åˆå§‹åŒ–æˆå‘˜å‡½æ•°å±æ€§
+	//³õÊ¼»¯³ÉÔ±º¯ÊıÊôĞÔ
 	this->v_all.clear();
 	this->v_g1.clear();
 	this->v_g2.clear();
 	this->save_member.clear();
-	// this->speak_game_count=1;  //å†æ¨¡å—åŒ–ä¸ºä¸€ä¸ªinit()æˆå‘˜å‡½æ•°çš„æ„ä¹‰æ˜¯ä»€ä¹ˆï¼Ÿ
+	// this->speak_game_count=1;  //ÔÙÄ£¿é»¯ÎªÒ»¸öinit()³ÉÔ±º¯ÊıµÄÒâÒåÊÇÊ²Ã´£¿
 	this->speak_ref=10;
-	this->file_is_empty=1;  //é»˜è®¤1ä¸ºç©º 0ä¸ºéç©º
+	this->file_is_empty=1;  //Ä¬ÈÏ1Îª¿Õ 0Îª·Ç¿Õ
 }
 void speak_manager::create_speaker(){
 	string name_need="ABCDEFGHIJKL";
 	for (int i = 0; i < name_need.size(); i++)
 	{
-		string name="é€‰æ‰‹";
+		string name="Ñ¡ÊÖ";
 		name+=name_need[i];
 		speaker sp;
-		sp.name=name;   //å§“ååˆå§‹åŒ–
+		sp.name=name;   //ĞÕÃû³õÊ¼»¯
 		for (int j = 0; j < 2; j++)
 		{
-			sp.m_score[j]=0.0;  //ä¸¤è½®åˆ†æ•°åˆå§‹åŒ–
+			sp.m_score[j]=0.0;  //Á½ÂÖ·ÖÊı³õÊ¼»¯
 			/* code */
 		}
-        //ç¼–å·åˆå§‹åŒ–
+        //±àºÅ³õÊ¼»¯
 		sp.number=i+10087459;
 		// this->m_member=make_pair()
 		this->v_all.push_back(sp);
@@ -98,30 +98,30 @@ void speak_manager::create_speaker(){
 	}
 }
 void speak_manager::start_game(){
-	// create_speaker();  //æ„é€ å‡½æ•°ä¸­å·²å®ç°
+	// create_speaker();  //¹¹Ôìº¯ÊıÖĞÒÑÊµÏÖ
 	
-	//1.ç¬¬ä¸€è½®æ¯”èµ›
-	//æŠ½ç­¾
-	//æ¯”èµ›
-	//æ™‹çº§
+	//1.µÚÒ»ÂÖ±ÈÈü
+	//³éÇ©
+	//±ÈÈü
+	//½ú¼¶
 	start_draw();
     start_speak();
 
-	//2.ç¬¬äºŒè½®æ¯”èµ›
-	//æŠ½ç­¾
-	//æ¯”èµ›
-	//æ™‹çº§
-	//ä¿å­˜åˆ†æ•°
+	//2.µÚ¶şÂÖ±ÈÈü
+	//³éÇ©
+	//±ÈÈü
+	//½ú¼¶
+	//±£´æ·ÖÊı
 	start_draw();
     start_speak();
 	
 }
 void speak_manager::start_draw(){
-//æŠ½ç­¾
-std::cout<<"å¼€å§‹ç¬¬"<<this->speak_game_count<<"è½®æŠ½ç­¾"<<std::endl;
+//³éÇ©
+std::cout<<"¿ªÊ¼µÚ"<<this->speak_game_count<<"ÂÖ³éÇ©"<<std::endl;
 // cout<<"------------------------"<<endl;
-cout<<"æŠ½ç­¾åçš„é¡ºåºå¦‚ä¸‹"<<std::endl;
-cout<<"ç¼–å·"<<"       "<<"å§“å"<<endl;
+cout<<"³éÇ©ºóµÄË³ĞòÈçÏÂ"<<std::endl;
+cout<<"±àºÅ"<<"       "<<"ĞÕÃû"<<endl;
 if(this->speak_game_count==1){
 	random_shuffle(this->v_all.begin(),this->v_all.end());
     for (auto i = v_all.begin(); i !=v_all.end(); i++)
@@ -137,16 +137,16 @@ if(this->speak_game_count==1){
 		/* code */
 	}
 }
-cout<<"æŠ½ç­¾å®Œæ¯•"<<endl;
+cout<<"³éÇ©Íê±Ï"<<endl;
 system("pause >nul");
 system("cls");
 }
 void speak_manager::start_speak(){
-std::cout<<"ç¬¬"<<speak_game_count<<"è½®æ¯”èµ›ç°åœ¨å¼€å§‹"<<endl;
+std::cout<<"µÚ"<<speak_game_count<<"ÂÖ±ÈÈüÏÖÔÚ¿ªÊ¼"<<endl;
 // std::cout<<endl<<endl;
-vector<speaker> v_temp; //ä¸´æ—¶å®¹å™¨
+vector<speaker> v_temp; //ÁÙÊ±ÈİÆ÷
 // v_temp.resize(12);
-// int s_num=0; //è®¡æ•°å™¨
+// int s_num=0; //¼ÆÊıÆ÷
 while(true){
 if(this->speak_game_count==1){
 	v_temp.resize(12);
@@ -160,7 +160,7 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 {	
 	// s_num++;
     /*cout<<"----"<<s_num<<"----"<<endl;*/
-	deque<double> s_d;  //æ‰“åˆ†å®¹å™¨
+	deque<double> s_d;  //´ò·ÖÈİÆ÷
 	for (int i = 0; i <speak_ref; i++)
 	{	auto score=double((rand()%40+61));
 //        cout<<score<<endl;
@@ -169,18 +169,18 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 	}
 	sort(s_d.begin(),s_d.end(),greater<>());
 	s_d.pop_back();
-	s_d.pop_front();   //å‰”é™¤æœ€é«˜åˆ†å’Œæœ€ä½åˆ†
+	s_d.pop_front();   //ÌŞ³ı×î¸ß·ÖºÍ×îµÍ·Ö
 	double sum_score=0;
 	sum_score=accumulate(s_d.begin(),s_d.end(),0);
 	double ave_score=sum_score/double(s_d.size());
-//    cout<<"å¹³å‡æˆç»©ï¼š"<<ave_score<<endl;
+//    cout<<"Æ½¾ù³É¼¨£º"<<ave_score<<endl;
 	i->m_score[this->speak_game_count-1]=ave_score;
 	s_d.clear();
 	/* code */
 	// if (s_num%6==0)
 	// {
-		// cout<<"ç¬¬"<< s_num/6 <<"å°ç»„æ¯”èµ›æˆç»©å¦‚ä¸‹ï¼š"<<endl;
-		// cout<<"--ç¼–å·--"<<"--å§“å--"<<"--åˆ†æ•°--"<<endl;
+		// cout<<"µÚ"<< s_num/6 <<"Ğ¡×é±ÈÈü³É¼¨ÈçÏÂ£º"<<endl;
+		// cout<<"--±àºÅ--"<<"--ĞÕÃû--"<<"--·ÖÊı--"<<endl;
 		// for (auto j=v_temp.begin();j!=v_temp.end();j++)
 		// {
 		// 	cout<<j->number<<" "<<j->name<<" "<<*j->m_score<<endl;
@@ -188,7 +188,7 @@ for (auto i = v_temp.begin(); i != v_temp.end(); i++)
 		// }	
 }
 if(this->speak_game_count==1){
-	//ç¬¬ä¸€è½®æ¯”èµ›
+	//µÚÒ»ÂÖ±ÈÈü
 	deque<speaker> d1;
 	deque<speaker> d2;
 	for(auto i=0;i<v_temp.size()/2&&i<v_temp.size();++i){
@@ -205,12 +205,12 @@ if(this->speak_game_count==1){
 		sort(d1.begin(),d1.end(),mycompare_sort());
         sort(d2.begin(),d2.end(),mycompare_sort());
 		cout<<"-------------------------"<<endl;
-		std::cout<<"ç¬¬1å°ç»„æˆç»©å¦‚ä¸‹:"<<endl;
-		cout<<"ç¼–å·"<<"    "<<"å§“å"<<"    "<<"åˆ†æ•°"<<endl;
+		std::cout<<"µÚ1Ğ¡×é³É¼¨ÈçÏÂ:"<<endl;
+		cout<<"±àºÅ"<<"    "<<"ĞÕÃû"<<"    "<<"·ÖÊı"<<endl;
 		for(auto i=d1.begin();i!=d1.end();i++){
 			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
 		}
-		std::cout<<"æ­å–œä»¥ä¸‹é€‰æ‰‹æ™‹çº§ä¸‹ä¸€è½®æ¯”èµ›"<<endl;
+		std::cout<<"¹§Ï²ÒÔÏÂÑ¡ÊÖ½ú¼¶ÏÂÒ»ÂÖ±ÈÈü"<<endl;
 		d1.pop_back();
 		d1.pop_back();
 		d1.pop_back();
@@ -222,11 +222,11 @@ if(this->speak_game_count==1){
 
 		cout<<"-------------------------"<<endl;
 
-		std::cout<<"ç¬¬2å°ç»„æˆç»©å¦‚ä¸‹:"<<endl;
+		std::cout<<"µÚ2Ğ¡×é³É¼¨ÈçÏÂ:"<<endl;
 		for(auto i=d2.begin();i!=d2.end();i++){
 			std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[speak_game_count-1]<<endl;
 		}
-		std::cout<<"æ­å–œä»¥ä¸‹é€‰æ‰‹æ™‹çº§ä¸‹ä¸€è½®æ¯”èµ›"<<endl;
+		std::cout<<"¹§Ï²ÒÔÏÂÑ¡ÊÖ½ú¼¶ÏÂÒ»ÂÖ±ÈÈü"<<endl;
 		d2.pop_back();
 		d2.pop_back();
 		d2.pop_back();
@@ -252,26 +252,26 @@ if(this->speak_game_count==1){
 		cout<<"-------------------------"<<endl;
 		std::cout<<endl;
 	// }
-    std::cout<<"ç¬¬"<<this->speak_game_count<<"è½®æ¯”èµ›ç»“æŸ"<<endl;
+    std::cout<<"µÚ"<<this->speak_game_count<<"ÂÖ±ÈÈü½áÊø"<<endl;
 	v_temp.clear();
     this->speak_game_count=2;
-	cout<<"ä»¥ä¸‹é€‰æ‰‹è¿›å…¥ä¸‹è½®æ¯”èµ›ï¼š"<<endl;
+	cout<<"ÒÔÏÂÑ¡ÊÖ½øÈëÏÂÂÖ±ÈÈü£º"<<endl;
 	for(auto i=v_g1.begin();i!=v_g1.end();i++){
 		std::cout<<i->number<<" "<<i->name<<" "<<endl;
 	}
 	// continue;
 	break;
 }else{
-	//ç¬¬äºŒè½®æ¯”èµ›
+	//µÚ¶şÂÖ±ÈÈü
 	deque<speaker> d3;
-	// std::cout<<"å¼€å§‹ç¬¬äºŒè½®æ¯”èµ›"<<endl;
+	// std::cout<<"¿ªÊ¼µÚ¶şÂÖ±ÈÈü"<<endl;
 	// cout<<this->speak_game_count<<endl;
 	for(auto i=v_temp.begin();i!=v_temp.end();i++){
 		// std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
 		d3.push_back(*i);
 	}
 	sort(d3.begin(),d3.end(),mycompare_sort());
-	std::cout<<"ç¬¬äºŒè½®æ¯”èµ›ç»“æœå¦‚ä¸‹ï¼š"<<endl;
+	std::cout<<"µÚ¶şÂÖ±ÈÈü½á¹ûÈçÏÂ£º"<<endl;
 	// cout<<this->speak_game_count<<endl;
 	for(auto i=d3.begin();i!=d3.end();i++){
 		std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
@@ -285,7 +285,7 @@ if(this->speak_game_count==1){
 		// d3.push_back(*i);
 		this->v_g2.push_back(*i);
 	}
-	cout<<"æœ¬æ¬¡æ¯”èµ›å‰ä¸‰åä¸ºï¼š"<<endl;
+	cout<<"±¾´Î±ÈÈüÇ°ÈıÃûÎª£º"<<endl;
 	for (auto i = v_g2.begin(); i != v_g2.end(); i++)
 	{
 		std::cout<<i->number<<" "<<i->name<<" "<<i->m_score[this->speak_game_count-1]<<endl;
@@ -311,37 +311,37 @@ void speak_manager::save_speaker(vector<speaker> &v) {
 	{
 		// fst1.write((const char*)&i,sizeof(*i));
 		// /* code */
-		fst1<<","<<i->name<<" "/*<<i->m_score[0]*/<<" "<<i->m_score[1]<<","<<endl;   //å› ä¸ºv_g1ã€v_g2åˆ†å¼€å­˜å‚¨ä¸¤è½®åˆ†æ•°ï¼Œè¿™é‡Œåªå†™å…¥ç¬¬äºŒè½®åˆ†æ•°
+		fst1<<","<<i->name<<" "/*<<i->m_score[0]*/<<" "<<i->m_score[1]<<","<<endl;   //ÒòÎªv_g1¡¢v_g2·Ö¿ª´æ´¢Á½ÂÖ·ÖÊı£¬ÕâÀïÖ»Ğ´ÈëµÚ¶şÂÖ·ÖÊı
 	}
 	// fst1<<"11111"<<endl;
 	fst1.close();
-	std::cout<<"ä¿å­˜æˆåŠŸ"<<endl;
+	std::cout<<"±£´æ³É¹¦"<<endl;
 }
 void speak_manager::get_speaker(){
 	fstream fst2;
 	fst2.open("win_speaker.txt",ios::in);
 	if (!fst2.is_open())
 	{	
-		std::cout<<"æ–‡ä»¶æ‰“å¼€å¤±è´¥"<<endl;
-		this->file_is_empty=1; //æ–‡ä»¶æ ‡è¯†ç½®ç©º	
+		std::cout<<"ÎÄ¼ş´ò¿ªÊ§°Ü"<<endl;
+		this->file_is_empty=1; //ÎÄ¼ş±êÊ¶ÖÃ¿Õ	
 		fst2.close();
 		/* code */
 	}
 	char ch;
 	fst2>>ch;
 	if(fst2.eof()){
-		cout<<"æ–‡ä»¶å­˜åœ¨ä½†æ˜¯ä¸ºç©º"<<endl;
+		cout<<"ÎÄ¼ş´æÔÚµ«ÊÇÎª¿Õ"<<endl;
 		this->file_is_empty=1;
 		fst2.close();
 		return;
 	}else{
-		this->file_is_empty=0;  //æ–‡ä»¶æ ‡è¯†éç©º
+		this->file_is_empty=0;  //ÎÄ¼ş±êÊ¶·Ç¿Õ
 		fst2.putback(ch);
-		string data;  //åˆ›å»ºå­—ç¬¦ä¸²æ¥æ”¶å­—ç¬¦  stringä¹Ÿæ˜¯å®¹å™¨çš„ä¸€ç§
+		string data;  //´´½¨×Ö·û´®½ÓÊÕ×Ö·û  stringÒ²ÊÇÈİÆ÷µÄÒ»ÖÖ
 		int index=0;
 
 		while(fst2>>data){
-			//å¯¹å­—ç¬¦ä¸²è¿›è¡Œå¤„ç†
+			//¶Ô×Ö·û´®½øĞĞ´¦Àí
 			std::vector<string> v;
 			int pos=-1;
 			int start=0;
@@ -368,18 +368,18 @@ void speak_manager::show_speaker(){
     system("cls");
 }
 void speak_manager::clear_speak() {
-    cout<<"ç¡®è®¤æ¸…ç©ºï¼Ÿ"<<endl;
-    cout<<"----1.ç¡®è®¤----"<<endl;
-    cout<<"----2.å–æ¶ˆ----"<<endl;
+    cout<<"È·ÈÏÇå¿Õ£¿"<<endl;
+    cout<<"----1.È·ÈÏ----"<<endl;
+    cout<<"----2.È¡Ïû----"<<endl;
     auto select=0;
     cin>>select;
     if(select==1){
-        fstream fst("win_speaker.txt",ios ::trunc);  //åˆ é™¤æ–‡ä»¶
+        fstream fst("win_speaker.txt",ios ::trunc);  //É¾³ıÎÄ¼ş
         fst.close();
-		this->init();//ç½®ç©ºåé‡æ–°å†™å…¥
+		this->init();//ÖÃ¿ÕºóÖØĞÂĞ´Èë
 		this->create_speaker();
 		this->get_speaker();
-        cout<<"æ¸…ç©ºæˆåŠŸ"<<endl;
+        cout<<"Çå¿Õ³É¹¦"<<endl;
     }
     system("pause");
     system("cls");

@@ -46,10 +46,6 @@ void fun02(){
             num2++;
             std::cout<<i<<std::endl;
             mutex_num2.unlock();
-
-
-
-
         } else{
             std::cout<<"mutex_num2_try_lock_error"<<std::endl;
         }

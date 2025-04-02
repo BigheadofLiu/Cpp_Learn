@@ -22,7 +22,7 @@ public:
     void add_order_id();  //添加预约
     void show_order();  //查看预约
     void clear_order_file();  //清除预约
-    void init_vector(); //初始化容器（vector）
+    void init_vector(); //初始化容器(vector)
     bool check_order(int,int);  //检查预约
     void show_computer_room();  //查看机房信息
     void init_computer();      //初始化机房

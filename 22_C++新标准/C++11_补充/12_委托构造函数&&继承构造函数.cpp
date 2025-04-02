@@ -104,7 +104,7 @@ public:
     void fun(){
         cout<<"i`m child_1 fun()"<<endl;
     }
-    child_1():base();
+    child_1():base(){};
     child_1(int a): base(a){}
     child_1(int a,int b):base(a,b){}
     child_1(int a,int b,int c): base(a,b,c){}

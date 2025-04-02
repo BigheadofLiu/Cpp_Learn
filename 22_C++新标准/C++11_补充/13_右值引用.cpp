@@ -91,7 +91,7 @@ public:
     C():num(new int(100)){
         cout<<"construct:i`m your dad"<<endl;
     }
-    C(const B& c):num(new int(*c.num)){  //(深复制）
+    C(const B& c):num(new int(*c.num)){  //(拷贝构造:深复制）
         cout<<"copy construct:i`m your father"<<endl;
     }
     C(C&& c):num(c.num){ //移动构造函数（浅复制）

@@ -22,7 +22,7 @@ void test01(){
 //    std::thread t2(t1); //拷贝构造被禁用
     std::thread t3(thread&& t1);
 
-    std::thread t4;
+    std::thread t4(std::move(t1));
     std::thread t5(const thread& t1);
 
 }

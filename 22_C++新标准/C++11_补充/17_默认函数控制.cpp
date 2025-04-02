@@ -34,8 +34,11 @@ class B{
 B::B()=default;
 B::B(const B&)=default;
 B::B(B&& obj)=default;
-B::B& operator=(const B& obj)=default;
-B::B& operator=(B&& obj)=default;
+// B::B& operator=(const B& obj)=default;
+// B::B& operator=(B&& obj)=default;
+
+B &B::operator=(B &&obj)=default;
+B &B::operator=(const B &obj)=default;
 B::~B()=default;
 
 
@@ -54,17 +57,23 @@ public:
 //内部delete
 class D{
 public:
-    void func(){std::cout<<"hello"<<endl;}
-    void func(int a){cout<<"func(int a)"<<endl}=delete;
+    void func()=delete;/*{
+        std::cout<<"hello"<<endl;
+    }*/
+    void func(int a)/*{cout<<"func(int a)"<<endl}*/=delete; //error
     D()=delete;
+    D(const D&);
+    C& operator=(const D& obj);
+//    C& operator=(D&& obj);
 };
 //外部delete
-D::D(const D&)=delete;
+//C &D::operator=(D &&obj) =delete;  //error
+
 
 void test01(){
-    D d1;
-//    d1.func(1);
-    d1.func();
+//    D d1; //error
+//    d1.func(1); //error
+//    d1.func(); //error
 }
 int main(){
     test01();

@@ -28,7 +28,7 @@ int main(){
         test3();
     }catch(int){
         cout<<"捕获到test3异常"<<endl;  //因为定义异常无法抛出 所以捕获不到异常
-    }catch(const char*){
+    }catch(const char*){  //同样无法捕获
         cout<<"捕获到test4异常"<<endl;
     }
 }
