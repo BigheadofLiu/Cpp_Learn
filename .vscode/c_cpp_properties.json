@@ -1,24 +1,34 @@
 {
-  "configurations": [
-    {
-      "name": "windows-gcc-x86",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "C:\\Users\\ZYB\\vcpkg\\packages\\sfml_x64-windows\\include",
-        "${workspaceFolder}/include/**",
-        "E:\\Demo\\Cpp\\Vscode\\19_案例\\演讲比赛\\include\\**"
-      ],
-      "defines": [
-        "_DEBUG",
-        "UNICODE",
-        "_UNICODE"
-      ],
-      "compilerPath": "E:/soft/Environment/mingw64/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "windows-gcc-x86"
-    }
-  ],
-  "version": 4
-  
+    "configurations": [
+        {
+            "name": "windows-gcc-x86",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Users\\ZYB\\vcpkg\\packages\\sfml_x64-windows\\include",
+                "${workspaceFolder}/include/**",
+                "E:\\Demo\\Cpp\\Vscode\\19_案例\\演讲比赛\\include\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "${default}",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x86"
+        },
+        {
+            "name": "linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerPath": "/usr/bin/gcc"
+        }
+    ],
+    "version": 4
 }
