@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/zyb/Demo/CPP/VScode/Cpp_Learn/22_C++新标准/C++11_补充/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/Cpp_11.dir/30_条件变量.cpp.o -c /home/zyb/Demo/CPP/VScode/Cpp_Learn/22_C++新标准/C++11_补充/30_条件变量.cpp",
+  "file": "/home/zyb/Demo/CPP/VScode/Cpp_Learn/22_C++新标准/C++11_补充/30_条件变量.cpp",
+  "output": "CMakeFiles/Cpp_11.dir/30_条件变量.cpp.o"
+}
+]
