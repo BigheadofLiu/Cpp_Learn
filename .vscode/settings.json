@@ -128,5 +128,7 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "C_Cpp.default.compilerPath": "/usr/bin/g++",
+  "cmake.sourceDirectory": "/home/zyb/Demo/CPP/VScode/Cpp_Learn/22_C++新标准"
 }
